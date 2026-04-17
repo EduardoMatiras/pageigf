@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IGF — Imersão Gestor do Futuro | Tetra Educação</title>
   <meta name="description" content="Em 4 aulas ao vivo, aprenda as ferramentas de gestão usadas por líderes de alta performance. 100% gratuito, com certificado." />
+  <!-- GTM -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MF84VX5');</script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -99,6 +106,7 @@
     .navbar-logo img {
       height: 36px;
       display: block;
+      filter: brightness(0) invert(1);
     }
     .navbar-cta {
       display: inline-flex;
@@ -668,6 +676,7 @@
       height: 28px;
       margin: 0 auto 16px;
       display: block;
+      filter: brightness(0) invert(1);
     }
     .footer-cnpj {
       font-size: 12px;
@@ -684,6 +693,57 @@
       transition: color 0.2s ease;
     }
     .footer-links a:hover { color: var(--color-accent); }
+
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(6px);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #0d1117;
+      border: 1px solid rgba(0,255,234,0.25);
+      border-radius: 16px;
+      padding: 40px 32px;
+      max-width: 520px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 0 60px rgba(0,255,234,0.1);
+    }
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 22px;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: #00ffea; }
+    .modal-title {
+      font-family: var(--font-family);
+      font-size: 22px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .modal-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      margin-bottom: 24px;
+    }
 
     /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
@@ -730,6 +790,19 @@
   </style>
 </head>
 <body>
+  <!-- GTM noscript -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MF84VX5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()" aria-label="Fechar">×</button>
+      <p class="modal-title" id="modal-title">Garanta sua vaga gratuita</p>
+      <p class="modal-sub">Preencha seus dados para garantir acesso às 4 aulas ao vivo.</p>
+      <div class="_form_326"></div>
+      <script src="https://tetraeducacao.activehosted.com/f/embed.php?id=326" charset="utf-8"></script>
+    </div>
+  </div>
 
   <!-- ─── COUNTDOWN BAR ─── -->
   <div class="countdown-bar">
@@ -742,9 +815,9 @@
       <a href="#" class="navbar-logo" aria-label="Tetra Educação">
         <img src="https://tetraeducacao.com.br/logotetra.png" alt="Tetra Educação" />
       </a>
-      <a href="#inscricao" class="navbar-cta">
+      <button onclick="openModal()" class="navbar-cta">
         Quero minha vaga <span class="btn-arrow">→</span>
-      </a>
+      </button>
     </div>
   </nav>
 
@@ -765,9 +838,9 @@
         </p>
 
         <div>
-          <a href="#inscricao" class="btn-primary large pulse" id="hero-cta">
+          <button onclick="openModal()" class="btn-primary large pulse" id="hero-cta">
             Quero minha vaga gratuita <span class="btn-arrow">→</span>
-          </a>
+          </button>
         </div>
 
         <div class="hero-badges">
@@ -912,9 +985,9 @@
           </div>
         </div>
       </div>
-      <a href="#inscricao" class="btn-primary">
+      <button onclick="openModal()" class="btn-primary">
         Garantir minha vaga agora <span class="btn-arrow">→</span>
-      </a>
+      </button>
     </div>
   </section>
 
@@ -1023,9 +1096,9 @@
         <p style="font-size: 16px; color: var(--color-text-secondary); max-width: 480px; margin: 0 auto 36px; line-height: 1.6;">
           As vagas são limitadas. Clique abaixo para garantir seu acesso gratuito às 4 aulas ao vivo.
         </p>
-        <a href="#" class="btn-primary large pulse" onclick="return false;" style="display:inline-flex;">
+        <button onclick="openModal()" class="btn-primary large pulse" style="display:inline-flex;">
           Quero minha vaga gratuita <span class="btn-arrow">→</span>
-        </a>
+        </button>
         <div class="hero-badges" style="justify-content: center; margin-top: 24px;">
           <span class="badge">✓ 100% Gratuito</span>
           <span class="badge">⚡ Vagas Limitadas</span>
@@ -1051,6 +1124,22 @@
 
   <!-- ─── SCRIPTS ─── -->
   <script>
+    // Modal
+    function openModal() {
+      document.getElementById('modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
     // Countdown Timer
     function updateCountdown() {
       const target = new Date('2025-04-27T19:30:00-03:00');

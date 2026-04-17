@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imersão Gestor do Futuro | Tetra Educação</title>
+  <meta name="description" content="Treinamento gratuito de atualização em gestão e liderança. Em 4 aulas, conheça as ferramentas usadas pelos líderes de alta performance." />
+
+  <!-- GTM -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MF84VX5');</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --c: #00FFEA;
+      --c-dim: rgba(0,255,234,0.12);
+      --c-border: rgba(0,255,234,0.25);
+      --bg: #050505;
+      --bg2: #0a0a0a;
+      --card: #111111;
+      --border: #1e1e1e;
+      --text: #ffffff;
+      --muted: #888;
+      --dim: #444;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #0e0e0e;
+      border: 1px solid var(--c-border);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 520px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 0 80px rgba(0,255,234,0.12);
+      animation: modal-in 0.25s ease;
+    }
+    @keyframes modal-in {
+      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .modal-header {
+      padding: 28px 28px 0;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+    }
+    .modal-header h3 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 5px; letter-spacing: -0.4px; }
+    .modal-header p { font-size: 13px; color: var(--muted); }
+    .modal-close {
+      width: 32px; height: 32px; min-width: 32px;
+      border: 1px solid var(--border); background: transparent;
+      border-radius: 50%; cursor: pointer; color: var(--muted);
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .modal-close:hover { border-color: var(--c-border); color: var(--c); }
+    .modal-body { padding: 20px 28px 28px; }
+    .modal-body ._form_326 { width: 100% !important; }
+    .modal-body ._form-content { background: transparent !important; }
+    .modal-body ._form-label { color: var(--muted) !important; font-family: 'Poppins', sans-serif !important; font-size: 13px !important; }
+    .modal-body ._field-wrapper input, .modal-body ._field-wrapper select {
+      background: #181818 !important; border: 1px solid var(--border) !important;
+      color: var(--text) !important; border-radius: 8px !important; font-family: 'Poppins', sans-serif !important;
+    }
+    .modal-body ._field-wrapper input:focus, .modal-body ._field-wrapper select:focus {
+      border-color: var(--c-border) !important; outline: none !important;
+    }
+    .modal-body ._button-wrapper ._submit {
+      background: var(--c) !important; color: #000 !important;
+      font-weight: 800 !important; font-family: 'Poppins', sans-serif !important;
+      border-radius: 10px !important; border: none !important; width: 100% !important;
+      padding: 14px !important; font-size: 15px !important; cursor: pointer !important;
+    }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--c); color: #000;
+      padding: 16px 40px; border-radius: 100px;
+      font-size: 15px; font-weight: 800;
+      cursor: pointer; border: none;
+      transition: transform 0.2s, opacity 0.2s;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: -0.2px;
+      box-shadow: 0 0 40px rgba(0,255,234,0.2);
+    }
+    .btn:hover { transform: translateY(-2px); opacity: 0.9; }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 28px rgba(0,255,234,0.18); }
+      50%       { box-shadow: 0 0 60px rgba(0,255,234,0.40); }
+    }
+    .btn { animation: pulse-glow 3s ease-in-out infinite; }
+    .btn:hover { animation: none; }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: var(--c);
+      padding: 14px 36px; border-radius: 100px;
+      font-size: 15px; font-weight: 700;
+      cursor: pointer; border: 1px solid var(--c-border);
+      transition: background 0.2s, transform 0.2s;
+      font-family: 'Poppins', sans-serif;
+    }
+    .btn-ghost:hover { background: var(--c-dim); transform: translateY(-1px); }
+
+    /* ─── URGENCY BAR ─── */
+    .topbar {
+      background: var(--c); color: #000;
+      padding: 10px 24px; text-align: center;
+      font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(5,5,5,0.96); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo img { height: 28px; filter: brightness(0) invert(1); }
+    .logo-tagline { font-size: 11px; font-weight: 500; color: var(--muted); border-left: 1px solid var(--border); padding-left: 12px; margin-left: 4px; }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--c); color: #000;
+      padding: 9px 22px; border-radius: 100px;
+      font-size: 13px; font-weight: 800; cursor: pointer; border: none;
+      font-family: 'Poppins', sans-serif; transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+    @media (max-width: 640px) {
+      header { padding: 12px 20px; }
+      .logo-tagline { display: none; }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: var(--bg);
+      padding: 100px 48px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -120px; right: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,255,234,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--c-border);
+      color: var(--c); padding: 6px 16px; border-radius: 100px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
+      margin-bottom: 36px; text-transform: uppercase;
+    }
+    .hero-title {
+      font-size: clamp(38px, 6vw, 72px);
+      font-weight: 900; line-height: 1.05;
+      letter-spacing: -2.5px; max-width: 900px;
+      color: #fff; margin-bottom: 24px;
+    }
+    .hero-title .c { color: var(--c); }
+    .hero-desc {
+      font-size: clamp(16px, 2vw, 18px); color: var(--muted);
+      max-width: 580px; margin-bottom: 48px; line-height: 1.7; font-weight: 400;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 72px; }
+    .hero-free { font-size: 13px; color: var(--dim); display: flex; align-items: center; gap: 6px; }
+    .hero-numbers {
+      display: flex; gap: 0; flex-wrap: wrap;
+      border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; max-width: 620px;
+    }
+    .hero-num {
+      flex: 1; min-width: 120px; padding: 20px 28px;
+      border-right: 1px solid var(--border); text-align: center;
+    }
+    .hero-num:last-child { border-right: none; }
+    .hero-num strong { display: block; font-size: clamp(22px, 3vw, 32px); font-weight: 900; color: var(--c); letter-spacing: -1px; line-height: 1; margin-bottom: 4px; }
+    .hero-num span { font-size: 11px; color: var(--dim); font-weight: 500; text-transform: uppercase; letter-spacing: 0.6px; }
+    @media (max-width: 480px) {
+      .hero { padding: 72px 20px 60px; }
+      .hero-numbers { max-width: 100%; }
+    }
+
+    /* ─── WRAPPER ─── */
+    .wrap { max-width: 1100px; margin: 0 auto; }
+    .section { padding: 88px 48px; }
+    @media (max-width: 640px) { .section { padding: 64px 20px; } }
+
+    /* ─── SECTION LABEL ─── */
+    .eyebrow {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 3px; color: var(--c); margin-bottom: 12px;
+    }
+    .h2 {
+      font-size: clamp(28px, 4vw, 48px); font-weight: 900;
+      letter-spacing: -1.5px; color: #fff; margin-bottom: 12px; line-height: 1.1;
+    }
+    .sub {
+      font-size: 15px; color: var(--muted); max-width: 540px; line-height: 1.65; margin-bottom: 52px;
+    }
+    .cta-row { margin-top: 52px; display: flex; justify-content: center; }
+
+    /* ─── PAIN POINTS ─── */
+    .pain { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .pain-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px;
+      background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+    }
+    .pain-item {
+      background: var(--bg2); padding: 32px 28px;
+      display: flex; gap: 20px; align-items: flex-start;
+      transition: background 0.2s;
+    }
+    .pain-item:hover { background: #0f0f0f; }
+    .pain-num {
+      font-size: 40px; font-weight: 900; color: rgba(0,255,234,0.1);
+      line-height: 1; min-width: 48px; letter-spacing: -2px; font-family: 'Poppins', sans-serif;
+    }
+    .pain-item h3 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.3; }
+    .pain-item p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ─── VALUE ─── */
+    .value { background: var(--bg); }
+    .value-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+    .value-row {
+      display: grid; grid-template-columns: 1fr 1fr; background: var(--bg);
+      padding: 0; gap: 0; transition: background 0.2s;
+    }
+    .value-row:hover { background: var(--card); }
+    .value-row-left, .value-row-right {
+      padding: 36px 40px;
+    }
+    .value-row-right { border-left: 1px solid var(--border); }
+    .v-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--c); margin-bottom: 10px; }
+    .v-title { font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 8px; line-height: 1.3; }
+    .v-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    @media (max-width: 640px) {
+      .value-row { grid-template-columns: 1fr; }
+      .value-row-right { border-left: none; border-top: 1px solid var(--border); }
+      .value-row-left, .value-row-right { padding: 28px 24px; }
+    }
+
+    /* ─── SCHEDULE ─── */
+    .schedule { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .timeline { max-width: 700px; position: relative; padding-left: 24px; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: var(--border); }
+    .tl-item { padding: 0 0 40px 36px; position: relative; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
+      position: absolute; left: -7px; top: 6px;
+      width: 15px; height: 15px; border-radius: 50%;
+      background: var(--bg2); border: 2px solid var(--c);
+      box-shadow: 0 0 12px rgba(0,255,234,0.35);
+    }
+    .tl-aula { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--c); margin-bottom: 4px; }
+    .tl-date {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--c-dim); border: 1px solid var(--c-border);
+      color: var(--c); padding: 3px 10px; border-radius: 100px;
+      font-size: 11px; font-weight: 600; margin-bottom: 10px;
+    }
+    .tl-title { font-size: 16px; font-weight: 700; color: #fff; line-height: 1.45; }
+    .tl-time { font-size: 12px; color: var(--dim); margin-top: 6px; display: flex; align-items: center; gap: 5px; }
+
+    /* ─── WHY ─── */
+    .why { background: var(--bg); }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; max-width: 880px; }
+    .why-card {
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 20px 24px; display: flex; align-items: flex-start; gap: 14px;
+      transition: border-color 0.2s;
+    }
+    .why-card:hover { border-color: var(--c-border); }
+    .why-icon {
+      width: 28px; height: 28px; min-width: 28px;
+      background: var(--c-dim); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; color: var(--c);
+    }
+    .why-card p { font-size: 14px; color: #ccc; font-weight: 500; line-height: 1.5; }
+    .why-card strong { color: #fff; font-weight: 700; }
+
+    /* ─── INSTRUCTOR ─── */
+    .instructor { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .instructor-layout {
+      display: grid; grid-template-columns: 200px 1fr; gap: 64px; align-items: center; max-width: 900px;
+    }
+    @media (max-width: 640px) {
+      .instructor-layout { grid-template-columns: 1fr; gap: 32px; }
+      .instructor-photo { margin: 0 auto; }
+    }
+    .instructor-photo {
+      width: 200px; height: 200px; border-radius: 50%; overflow: hidden;
+      border: 3px solid var(--c); box-shadow: 0 0 48px rgba(0,255,234,0.18);
+    }
+    .instructor-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    .instructor-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--c); margin-bottom: 10px; }
+    .instructor-name { font-size: clamp(28px, 4vw, 44px); font-weight: 900; color: #fff; letter-spacing: -1.5px; margin-bottom: 16px; line-height: 1.05; }
+    .instructor-bio { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 24px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .tag {
+      background: var(--c-dim); border: 1px solid var(--c-border);
+      color: var(--c); padding: 5px 12px; border-radius: 100px; font-size: 12px; font-weight: 600;
+    }
+
+    /* ─── PROOF ─── */
+    .proof { background: var(--bg); }
+    .proof-stats {
+      display: flex; gap: 0;
+      border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+      margin-bottom: 64px; flex-wrap: wrap;
+    }
+    .proof-stat {
+      flex: 1; min-width: 120px; padding: 28px 24px; text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .proof-stat:last-child { border-right: none; }
+    .proof-stat strong { display: block; font-size: clamp(32px, 4vw, 52px); font-weight: 900; color: var(--c); letter-spacing: -2px; line-height: 1; margin-bottom: 6px; }
+    .proof-stat span { font-size: 12px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.4px; }
+    .testimonials { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; max-width: 780px; }
+    .testimonial {
+      background: var(--bg); padding: 28px 32px;
+      transition: background 0.2s;
+    }
+    .testimonial:hover { background: var(--card); }
+    .stars { display: flex; gap: 3px; color: var(--c); margin-bottom: 12px; }
+    .quote-text { font-size: 15px; color: #bbb; line-height: 1.75; margin-bottom: 16px; font-style: italic; }
+    .author { display: flex; align-items: center; gap: 12px; }
+    .author-av {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--c-dim); border: 1px solid var(--c-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800; color: var(--c);
+    }
+    .author strong { display: block; font-size: 13px; font-weight: 700; color: #fff; }
+    .author span { font-size: 12px; color: var(--dim); }
+
+    /* ─── CTA SECTION ─── */
+    .cta-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 100px 48px; text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(0,255,234,0.05) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cta-section .h2 { font-size: clamp(32px, 5vw, 60px); text-align: center; margin-bottom: 16px; }
+    .cta-section .sub { text-align: center; margin: 0 auto 44px; }
+    .cta-chips { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 28px; }
+    .chip { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); font-weight: 500; }
+    .chip svg { color: var(--c); }
+    @media (max-width: 640px) { .cta-section { padding: 72px 20px; } }
+
+    /* ─── FAQ ─── */
+    .faq { background: var(--bg); border-top: 1px solid var(--border); }
+    .faq-list { max-width: 720px; display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item summary {
+      padding: 22px 28px; font-size: 15px; font-weight: 600; color: #fff;
+      cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+      list-style: none; user-select: none; gap: 16px; background: var(--bg);
+      transition: background 0.2s;
+    }
+    .faq-item summary:hover { background: var(--card); }
+    .faq-item[open] summary { background: var(--card); color: var(--c); }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-plus {
+      width: 24px; height: 24px; min-width: 24px;
+      border: 1px solid var(--border); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--c); font-size: 18px; font-weight: 300; transition: transform 0.2s;
+    }
+    .faq-item[open] .faq-plus { transform: rotate(45deg); border-color: var(--c-border); }
+    .faq-answer { padding: 0 28px 22px; font-size: 14px; color: var(--muted); line-height: 1.7; background: var(--card); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg); border-top: 1px solid var(--border);
+      padding: 44px 48px; text-align: center;
+    }
+    .footer-logo { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 18px; }
+    .footer-logo img { height: 24px; filter: brightness(0) invert(1); }
+    footer p { font-size: 12px; color: var(--dim); margin-bottom: 5px; }
+    footer a { color: var(--dim); text-decoration: underline; }
+    footer a:hover { color: var(--c); }
+  </style>
+</head>
+<body>
+
+<!-- GTM noscript -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MF84VX5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <h3 id="modal-title">Garanta sua vaga gratuita</h3>
+        <p>Preencha o formulário e receba o acesso no seu e-mail</p>
+      </div>
+      <button class="modal-close" onclick="closeModal()" aria-label="Fechar">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="_form_326"></div>
+      <script src="https://tetraeducacao.activehosted.com/f/embed.php?id=326" charset="utf-8"></script>
+    </div>
+  </div>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+  Vagas limitadas — Inscrição 100% gratuita · 27 a 30 de Abril
+</div>
+
+<!-- HEADER -->
+<header>
+  <a href="#" class="logo">
+    <img src="https://tetraeducacao.com.br/logotetra.png" alt="Tetra Educação" />
+    <span class="logo-tagline">Imersão Gestor do Futuro</span>
+  </a>
+  <button class="nav-cta" onclick="openModal()">
+    Quero minha vaga
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </button>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    Treinamento ao vivo · 4 aulas · Gratuito
+  </div>
+  <h1 class="hero-title">
+    Em 4 aulas, domine<br />
+    as ferramentas que os<br />
+    <span class="c">líderes de alta performance</span><br />
+    usam todo dia
+  </h1>
+  <p class="hero-desc">
+    Treinamento de atualização em gestão e liderança para quem quer parar de apagar incêndio e começar a liderar de verdade.
+  </p>
+  <div class="hero-actions">
+    <button class="btn" onclick="openModal()">
+      Quero minha vaga gratuita
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+    <span class="hero-free">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Totalmente gratuito
+    </span>
+  </div>
+  <div class="hero-numbers">
+    <div class="hero-num"><strong>+1M</strong><span>Profissionais treinados</span></div>
+    <div class="hero-num"><strong>4 aulas</strong><span>Online e ao vivo</span></div>
+    <div class="hero-num"><strong>+10h</strong><span>Produtivas por semana</span></div>
+    <div class="hero-num"><strong>100%</strong><span>Gratuito</span></div>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section class="section pain">
+  <div class="wrap">
+    <p class="eyebrow">Você se identifica?</p>
+    <h2 class="h2">Essas dores são reais.<br />Você não está sozinho.</h2>
+    <p class="sub">Analisamos centenas de gestores — as mesmas dores aparecem repetidamente.</p>
+    <div class="pain-grid">
+      <div class="pain-item">
+        <div class="pain-num">01</div>
+        <div><h3>Sempre apagando incêndio</h3><p>Você vive correndo atrás de problemas em vez de focar na estratégia. O dia acaba e a lista não para de crescer.</p></div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-num">02</div>
+        <div><h3>Equipe desmotivada</h3><p>Você cobra, cobra, cobra — e os resultados continuam abaixo do esperado. Engajamento zero, turnover alto.</p></div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-num">03</div>
+        <div><h3>Falta de tempo para tudo</h3><p>Reuniões, relatórios, cobranças e a operação. Sobra zero tempo para desenvolver a equipe.</p></div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-num">04</div>
+        <div><h3>Perdido com IA e tecnologia</h3><p>O mercado muda na velocidade da luz e você sente que está ficando para trás em ferramentas e automação.</p></div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-num">05</div>
+        <div><h3>Dificuldade em delegar</h3><p>Você delega, mas a tarefa não sai como precisa — e no fim acaba fazendo tudo você mesmo.</p></div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-num">06</div>
+        <div><h3>Sem reconhecimento</h3><p>Você entrega resultado, mas não sente que sua liderança é vista ou valorizada pela empresa.</p></div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <button class="btn" onclick="openModal()">
+        Quero resolver essas dores
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE PROPS -->
+<section class="section value">
+  <div class="wrap">
+    <p class="eyebrow">O que vai mudar</p>
+    <h2 class="h2">O que muda na sua gestão<br />depois dessas 4 aulas?</h2>
+    <p class="sub">Resultados práticos que você começa a aplicar imediatamente.</p>
+    <div class="value-list">
+      <div class="value-row">
+        <div class="value-row-left">
+          <p class="v-label">01 — Produtividade</p>
+          <p class="v-title">Você vai parar de apagar incêndio todo dia</p>
+          <p class="v-body">Com processos claros e ferramentas de produtividade, sua rotina de gestão vira sistema — não caos.</p>
+        </div>
+        <div class="value-row-right">
+          <p class="v-label">02 — Liderança</p>
+          <p class="v-title">Sua equipe vai entregar no prazo sem você cobrar</p>
+          <p class="v-body">Aprenda a criar estruturas de acompanhamento que fazem sua equipe funcionar sem depender de você.</p>
+        </div>
+      </div>
+      <div class="value-row" style="border-top: 1px solid var(--border);">
+        <div class="value-row-left">
+          <p class="v-label">03 — Posicionamento</p>
+          <p class="v-title">Você vai se posicionar como líder referência</p>
+          <p class="v-body">Saiba como os executivos mais bem pagos se posicionam — e replique isso na sua empresa hoje mesmo.</p>
+        </div>
+        <div class="value-row-right">
+          <p class="v-label">04 — Tempo</p>
+          <p class="v-title">Você vai ganhar +10 horas produtivas por semana</p>
+          <p class="v-body">Com automações e IA aplicadas à gestão, você recupera tempo para o que realmente importa.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <button class="btn" onclick="openModal()">
+        Quero minha vaga gratuita
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="section schedule">
+  <div class="wrap">
+    <p class="eyebrow">Grade completa</p>
+    <h2 class="h2">4 aulas ao vivo</h2>
+    <p class="sub">Conteúdo prático, aplicável no dia seguinte. Sem enrolação.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-aula">Aula 01</p>
+        <span class="tl-date">Segunda · 27 de Abril</span>
+        <p class="tl-title">7 ferramentas de produtividade que vão potencializar sua gestão</p>
+        <p class="tl-time">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          19h30 · Horário de Brasília
+        </p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-aula">Aula 02</p>
+        <span class="tl-date">Terça · 28 de Abril</span>
+        <p class="tl-title">Ferramentas que todo gestor precisa conhecer para ter alta performance</p>
+        <p class="tl-time">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          19h30 · Horário de Brasília
+        </p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-aula">Aula 03</p>
+        <span class="tl-date">Quarta · 29 de Abril</span>
+        <p class="tl-title">O segredo da Gestão de Pessoas: transforme sua maior dor na sua maior arma</p>
+        <p class="tl-time">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          19h30 · Horário de Brasília
+        </p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-aula">Aula 04</p>
+        <span class="tl-date">Quinta · 30 de Abril</span>
+        <p class="tl-title">O que está por trás do posicionamento dos executivos mais bem pagos</p>
+        <p class="tl-time">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          19h30 · Horário de Brasília
+        </p>
+      </div>
+    </div>
+    <div class="cta-row">
+      <button class="btn" onclick="openModal()">
+        Reservar minha vaga nas aulas
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section why">
+  <div class="wrap">
+    <p class="eyebrow">Por que participar</p>
+    <h2 class="h2">Sem letras miúdas</h2>
+    <p class="sub">Tudo o que você tem a ganhar participando da Imersão Gestor do Futuro.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p><strong>100% gratuito e online</strong> — sem custos, sem inscrição paga</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p><strong>Certificado de participação</strong> — para valorizar o seu currículo</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p><strong>Conteúdo 100% prático</strong> — estratégias de automação e IA na gestão</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p><strong>Materiais de apoio</strong> — templates e ferramentas prontos para usar</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p><strong>Aulas ao vivo</strong> — interaja diretamente com o instrutor em tempo real</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p><strong>Sem compromisso</strong> — é gratuito, basta participar e aprender</p>
+      </div>
+    </div>
+    <div class="cta-row">
+      <button class="btn" onclick="openModal()">
+        Quero participar gratuitamente
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTOR -->
+<section class="section instructor">
+  <div class="wrap">
+    <div class="instructor-layout">
+      <div class="instructor-photo">
+        <img src="https://tetraeducacao.com.br/jheython.png" alt="Jheython Santana" />
+      </div>
+      <div>
+        <p class="instructor-eyebrow">Seu instrutor</p>
+        <h2 class="instructor-name">Jheython Santana</h2>
+        <p class="instructor-bio">Treinador Certificado Microsoft (MCT), Microsoft Office Specialist Expert e Fundador da Tetra Educação. Com mais de 10 anos liderando equipes em multinacionais do agronegócio nos EUA e no Brasil, Jheython já treinou mais de 1 milhão de profissionais e construiu uma das maiores comunidades de gestão e produtividade do país.</p>
+        <div class="tags">
+          <span class="tag">MCT — Microsoft Certified Trainer</span>
+          <span class="tag">Office Specialist Expert</span>
+          <span class="tag">+1M profissionais treinados</span>
+          <span class="tag">800k+ seguidores</span>
+        </div>
+        <button class="btn-ghost" onclick="openModal()">
+          Aprender com o Jheython
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="section proof">
+  <div class="wrap">
+    <p class="eyebrow">Resultados reais</p>
+    <h2 class="h2">+1 milhão de profissionais<br />já transformaram sua gestão</h2>
+    <div class="proof-stats">
+      <div class="proof-stat"><strong>1M+</strong><span>Profissionais treinados</span></div>
+      <div class="proof-stat"><strong>800k+</strong><span>Seguidores nas redes</span></div>
+      <div class="proof-stat"><strong>4.9</strong><span>Avaliação média</span></div>
+    </div>
+    <div class="testimonials">
+      <div class="testimonial">
+        <div class="stars"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p class="quote-text">"Depois da imersão comecei a aplicar as ferramentas no dia seguinte. Minha equipe ficou chocada com a mudança na minha organização. Em 2 semanas recuperei horas perdidas todo dia."</p>
+        <div class="author"><div class="author-av">A</div><div><strong>Aline R.</strong><span>Gerente Administrativa</span></div></div>
+      </div>
+      <div class="testimonial">
+        <div class="stars"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p class="quote-text">"Tinha muita dificuldade em delegar e minha equipe ficava desmotivada. As técnicas da aula 3 mudaram completamente como eu enxergo gestão de pessoas."</p>
+        <div class="author"><div class="author-av">G</div><div><strong>Grasielly S.</strong><span>Coordenadora de Vendas</span></div></div>
+      </div>
+      <div class="testimonial">
+        <div class="stars"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p class="quote-text">"Não sabia usar IA nem Excel direito. Hoje automatizei 3 processos que me tomavam horas toda semana. Melhor treinamento gratuito que já fiz na minha carreira."</p>
+        <div class="author"><div class="author-av">M</div><div><strong>Marlene C.</strong><span>Coordenadora de Produção</span></div></div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <button class="btn" onclick="openModal()">
+        Quero ser o próximo caso de sucesso
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+  <div class="wrap">
+    <p class="eyebrow" style="text-align:center;">Inscrição gratuita</p>
+    <h2 class="h2" style="text-align:center;">Garanta sua vaga gratuita<br />na Imersão Gestor do Futuro</h2>
+    <p class="sub" style="text-align:center; margin: 0 auto 44px;">Vagas limitadas. Inscreva-se agora e receba o link de acesso direto no seu e-mail.</p>
+    <div style="display:flex; justify-content:center;">
+      <button class="btn" style="font-size:17px; padding:18px 52px;" onclick="openModal()">
+        Quero minha vaga gratuita
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <div class="cta-chips">
+      <span class="chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>100% gratuito</span>
+      <span class="chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Online e ao vivo</span>
+      <span class="chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Certificado incluso</span>
+      <span class="chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sem compromisso</span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq">
+  <div class="wrap">
+    <p class="eyebrow">Dúvidas frequentes</p>
+    <h2 class="h2" style="margin-bottom:40px;">Perguntas frequentes</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>A imersão é realmente gratuita? <span class="faq-plus">+</span></summary>
+        <div class="faq-answer">Sim! A Imersão Gestor do Futuro é 100% gratuita. Você não paga nada para se inscrever e não há nenhum custo oculto.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Preciso ter experiência prévia em liderança? <span class="faq-plus">+</span></summary>
+        <div class="faq-answer">Não. A imersão foi desenvolvida tanto para quem já lidera equipes quanto para quem deseja ingressar em cargos de gestão. O conteúdo é prático e acessível.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Preciso ter conhecimento em IA ou tecnologia? <span class="faq-plus">+</span></summary>
+        <div class="faq-answer">Não precisa. O conteúdo parte do zero e mostra como aplicar ferramentas de IA e produtividade na gestão do dia a dia, mesmo sem conhecimento técnico prévio.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Vou receber o certificado de participação? <span class="faq-plus">+</span></summary>
+        <div class="faq-answer">Sim! Todos os participantes que concluírem a imersão recebem um certificado de participação da Tetra Educação.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Como vou receber o link das aulas? <span class="faq-plus">+</span></summary>
+        <div class="faq-answer">Após a inscrição, você receberá o link de acesso por e-mail e poderá receber lembretes pelo WhatsApp informado no cadastro.</div>
+      </details>
+    </div>
+    <div class="cta-row">
+      <button class="btn" onclick="openModal()">
+        Ainda tem dúvidas? Inscreva-se e descubra
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="https://tetraeducacao.com.br/logotetra.png" alt="Tetra Educação" />
+    <span style="font-size:14px; font-weight:700; color:#fff;">Tetra Educação</span>
+  </div>
+  <p>CNPJ: 34.285.904/0001-22</p>
+  <p><a href="#">Política de Privacidade</a> · <a href="#">Termos de Uso</a></p>
+  <p style="margin-top:16px; font-size:11px; color:#333;">© 2025 Tetra Educação. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+  function openModal() {
+    document.getElementById('modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('modal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>
+
+</body>
+</html>
