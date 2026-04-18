@@ -745,6 +745,51 @@
       margin-bottom: 24px;
     }
 
+    /* ─── FORM STYLING (ACTIVEHOSTED) ─── */
+    ._form_326 {
+      font-family: var(--font-family) !important;
+    }
+    ._form_326 ._form-label {
+      color: rgba(255,255,255,0.75) !important;
+      font-weight: 500 !important;
+      font-size: 14px !important;
+    }
+    ._form_326 ._field-wrapper input,
+    ._form_326 ._field-wrapper textarea {
+      background: rgba(255,255,255,0.08) !important;
+      border: 1px solid rgba(0,255,234,0.25) !important;
+      color: #ffffff !important;
+      padding: 12px 14px !important;
+      border-radius: 8px !important;
+      font-size: 14px !important;
+    }
+    ._form_326 ._field-wrapper input::placeholder,
+    ._form_326 ._field-wrapper textarea::placeholder {
+      color: rgba(255,255,255,0.4) !important;
+    }
+    ._form_326 ._field-wrapper input:focus,
+    ._form_326 ._field-wrapper textarea:focus {
+      outline: none !important;
+      border-color: #00ffea !important;
+      box-shadow: 0 0 12px rgba(0,255,234,0.2) !important;
+      background: rgba(255,255,255,0.12) !important;
+    }
+    ._form_326 ._button-wrapper ._submit {
+      background: #00ffea !important;
+      color: #000 !important;
+      font-weight: 700 !important;
+      font-size: 15px !important;
+      padding: 14px 28px !important;
+      border-radius: 8px !important;
+      border: none !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+    }
+    ._form_326 ._button-wrapper ._submit:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 0 24px rgba(0,255,234,0.4) !important;
+    }
+
     /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
@@ -806,7 +851,7 @@
 
   <!-- ─── COUNTDOWN BAR ─── -->
   <div class="countdown-bar">
-    <p>🔴 Evento ao vivo — Vagas se encerrando em <span id="countdown-timer">carregando...</span></p>
+    <p>🔴 Evento ao vivo | Vagas se encerrando <span id="countdown-timer">carregando...</span></p>
   </div>
 
   <!-- ─── NAVBAR ─── -->
@@ -829,8 +874,7 @@
         <div class="hero-supertitle">Imersão Gestor do Futuro</div>
 
         <h1 class="hero-title">
-          Treinamento de atualização em<br />
-          <span class="accent">gestão e liderança</span>
+          Treinamento de atualização em gestão e liderança
         </h1>
 
         <p class="hero-desc">
@@ -879,7 +923,7 @@
         <div class="transform-card">
           <div class="transform-card-icon">🏆</div>
           <h3>Você vai se posicionar como líder referência</h3>
-          <p>Entenda o que diferencia gestores promovidos rapidamente dos que ficam estagnados — mesmo tendo bons resultados.</p>
+          <p>Entenda o que diferencia gestores promovidos rapidamente dos que ficam estagnados, mesmo tendo bons resultados.</p>
         </div>
 
         <div class="transform-card">
@@ -1045,13 +1089,13 @@
     <div class="container">
       <div class="section-label">Diferenciais</div>
       <h2 class="section-title" id="beneficios-title">Por que <span class="accent">participar?</span></h2>
-      <p class="section-desc">Sem truques, sem enrolação — eis o que você vai encontrar nessa imersão.</p>
+      <p class="section-desc">Sem truques, sem enrolação eis o que você vai encontrar nessa imersão.</p>
 
       <div class="beneficios-grid">
 
         <div class="beneficio-item">
           <div class="beneficio-icon">🆓</div>
-          <div class="beneficio-text"><strong>100% Gratuito e Online.</strong> Sem custo, sem pegadinhas — acesso completo de onde você estiver.</div>
+          <div class="beneficio-text"><strong>100% Gratuito e Online.</strong> Sem custo, entre no grupo e preecha a pesquisa para confirmar sua presença.</div>
         </div>
 
         <div class="beneficio-item">
@@ -1076,7 +1120,7 @@
 
         <div class="beneficio-item">
           <div class="beneficio-icon">🚀</div>
-          <div class="beneficio-text"><strong>Ferramentas exclusivas:</strong> conteúdo que seus concorrentes ainda não dominam — saia na frente.</div>
+          <div class="beneficio-text"><strong>Ferramentas exclusivas:</strong> conteúdo que seus concorrentes ainda não dominam saia na frente.</div>
         </div>
 
       </div>
