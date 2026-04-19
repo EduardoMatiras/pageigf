@@ -745,144 +745,88 @@
       margin-bottom: 24px;
     }
 
-    /* ─── FORM STYLING (ACTIVEHOSTED) ─── */
-    ._form_326 {
-      font-family: var(--font-family) !important;
-    }
-    ._form_326 ._form-label {
+    /* ─── FORM ACTIVEHOSTED ─── */
+    .modal-box ._form_326 { width: 100% !important; font-family: var(--font-family) !important; }
+    .modal-box ._form-content { background: transparent !important; }
+    .modal-box ._form-label {
       color: rgba(255,255,255,0.75) !important;
+      font-family: var(--font-family) !important;
       font-weight: 500 !important;
       font-size: 14px !important;
     }
-    ._form_326 ._field-wrapper input,
-    ._form_326 ._field-wrapper textarea {
+    .modal-box ._field-wrapper input,
+    .modal-box ._field-wrapper textarea,
+    .modal-box ._field-wrapper select {
       background: rgba(255,255,255,0.08) !important;
       border: 1px solid rgba(0,255,234,0.25) !important;
       color: #ffffff !important;
-      padding: 12px 14px !important;
       border-radius: 8px !important;
+      font-family: var(--font-family) !important;
       font-size: 14px !important;
+      /* Padding individual — NÃO shorthand para não quebrar intl-tel-input */
+      padding-top: 12px !important;
+      padding-right: 14px !important;
+      padding-bottom: 12px !important;
     }
-    ._form_326 ._field-wrapper input::placeholder,
-    ._form_326 ._field-wrapper textarea::placeholder {
-      color: rgba(255,255,255,0.4) !important;
+    /* Padding esquerdo apenas para inputs que NÃO são telefone */
+    .modal-box ._field-wrapper input:not([type="tel"]),
+    .modal-box ._field-wrapper textarea,
+    .modal-box ._field-wrapper select {
+      padding-left: 14px !important;
     }
-    ._form_326 ._field-wrapper input:focus,
-    ._form_326 ._field-wrapper textarea:focus {
+    .modal-box ._field-wrapper input::placeholder,
+    .modal-box ._field-wrapper textarea::placeholder {
+      color: rgba(255,255,255,0.35) !important;
+    }
+    .modal-box ._field-wrapper input:focus,
+    .modal-box ._field-wrapper textarea:focus,
+    .modal-box ._field-wrapper select:focus {
       outline: none !important;
       border-color: #00ffea !important;
-      box-shadow: 0 0 12px rgba(0,255,234,0.2) !important;
+      box-shadow: 0 0 12px rgba(0,255,234,0.15) !important;
       background: rgba(255,255,255,0.12) !important;
     }
-    ._form_326 ._button-wrapper ._submit {
+    .modal-box ._button-wrapper ._submit {
       background: #00ffea !important;
       color: #000 !important;
-      font-weight: 700 !important;
+      font-weight: 800 !important;
+      font-family: var(--font-family) !important;
       font-size: 15px !important;
-      padding: 14px 28px !important;
-      border-radius: 8px !important;
+      padding: 14px !important;
+      border-radius: 10px !important;
       border: none !important;
-      cursor: pointer !important;
-      transition: all 0.3s ease !important;
-    }
-    ._form_326 ._button-wrapper ._submit:hover {
-      transform: translateY(-2px) !important;
-      box-shadow: 0 0 24px rgba(0,255,234,0.4) !important;
-    }
-
-    /* ─── PHONE FIELD: flag/DDI ao lado do input ─── */
-    /* Wrapper geral do intl-tel-input */
-    ._form_326 .iti {
       width: 100% !important;
-      display: block !important;
+      cursor: pointer !important;
     }
-    ._form_326 .iti__flag-container {
-      position: absolute !important;
-      top: 0 !important; bottom: 0 !important; left: 0 !important;
-      padding: 0 !important;
-    }
-    /* Garante que o input tel tenha espaço para a bandeira à esquerda */
-    ._form_326 ._field-wrapper input[type="tel"] {
-      padding-left: 58px !important;
-    }
-    ._form_326 .iti__selected-flag {
+    .modal-box ._button-wrapper ._submit:hover { opacity: 0.88 !important; }
+
+    /* ─── PHONE FIELD (intl-tel-input) ─── */
+    /* O intl-tel-input injeta padding-left via inline style no input[tel].
+       Sem padding-left com !important aqui — o inline style do lib prevalece. */
+    .modal-box .iti { width: 100% !important; display: block !important; position: relative !important; }
+    .modal-box .iti__flag-container { position: absolute !important; top: 0 !important; bottom: 0 !important; left: 0 !important; padding: 0 !important; }
+    .modal-box .iti__selected-flag {
       background: rgba(255,255,255,0.06) !important;
       border-right: 1px solid rgba(0,255,234,0.2) !important;
-      padding: 0 8px 0 10px !important;
       height: 100% !important;
+      display: flex !important; align-items: center !important;
+      padding: 0 10px !important;
       border-radius: 8px 0 0 8px !important;
     }
-    ._form_326 .iti__selected-flag:hover,
-    ._form_326 .iti__selected-flag:focus {
-      background: rgba(0,255,234,0.1) !important;
-    }
-    ._form_326 .iti__selected-dial-code {
-      color: rgba(255,255,255,0.8) !important;
-      font-size: 13px !important;
-      margin-left: 4px !important;
-    }
-    ._form_326 .iti__arrow {
-      border-top-color: rgba(255,255,255,0.5) !important;
-    }
-    /* Dropdown da lista de países */
-    ._form_326 .iti__country-list {
-      background: #0d1117 !important;
-      border: 1px solid rgba(0,255,234,0.25) !important;
-      border-radius: 8px !important;
-      color: #fff !important;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
-      max-height: 200px !important;
-    }
-    ._form_326 .iti__country-list li:hover,
-    ._form_326 .iti__country-list .iti__highlight {
-      background: rgba(0,255,234,0.1) !important;
-    }
-    ._form_326 .iti__dial-code {
-      color: rgba(255,255,255,0.5) !important;
-    }
-    ._form_326 .iti__divider {
-      border-bottom-color: rgba(255,255,255,0.1) !important;
-    }
+    .modal-box .iti__selected-flag:hover { background: rgba(0,255,234,0.1) !important; }
+    .modal-box .iti__selected-dial-code { color: rgba(255,255,255,0.8) !important; font-size: 13px !important; margin-left: 4px !important; }
+    .modal-box .iti__arrow { border-top-color: rgba(255,255,255,0.5) !important; }
+    .modal-box .iti__country-list { background: #0d1117 !important; border: 1px solid rgba(0,255,234,0.25) !important; border-radius: 8px !important; color: #fff !important; box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important; max-height: 200px !important; overflow-y: auto !important; }
+    .modal-box .iti__country-list li:hover,
+    .modal-box .iti__country-list .iti__highlight { background: rgba(0,255,234,0.1) !important; }
+    .modal-box .iti__dial-code { color: rgba(255,255,255,0.45) !important; }
+    .modal-box .iti__divider { border-bottom-color: rgba(255,255,255,0.1) !important; }
     /* phone-flags-wrapper (classe alternativa do ActiveCampaign) */
-    ._form_326 .phone-flags-wrapper {
-      display: flex !important;
-      align-items: stretch !important;
-      background: rgba(255,255,255,0.08) !important;
-      border: 1px solid rgba(0,255,234,0.25) !important;
-      border-radius: 8px !important;
-      overflow: hidden !important;
-    }
-    ._form_326 .phone-flags-wrapper:focus-within {
-      border-color: #00ffea !important;
-      box-shadow: 0 0 12px rgba(0,255,234,0.2) !important;
-    }
-    ._form_326 .phone-flags {
-      position: static !important;
-      flex-shrink: 0 !important;
-      display: flex !important;
-      align-items: center !important;
-      gap: 4px !important;
-      padding: 0 10px !important;
-      border-right: 1px solid rgba(0,255,234,0.2) !important;
-      cursor: pointer !important;
-      color: #fff !important;
-      font-size: 13px !important;
-      background: rgba(255,255,255,0.06) !important;
-    }
-    ._form_326 .phone-flags img { width: 20px !important; }
-    ._form_326 .phone-flags-wrapper input[type="tel"] {
-      border: none !important;
-      background: transparent !important;
-      box-shadow: none !important;
-      border-radius: 0 !important;
-      flex: 1 1 auto !important;
-      padding: 12px 14px !important;
-    }
-    ._form_326 .phone-flags-wrapper input[type="tel"]:focus {
-      border: none !important;
-      box-shadow: none !important;
-      outline: none !important;
-    }
+    .modal-box .phone-flags-wrapper { display: flex !important; align-items: stretch !important; background: rgba(255,255,255,0.08) !important; border: 1px solid rgba(0,255,234,0.25) !important; border-radius: 8px !important; overflow: hidden !important; }
+    .modal-box .phone-flags-wrapper:focus-within { border-color: #00ffea !important; }
+    .modal-box .phone-flags { position: static !important; flex-shrink: 0 !important; display: flex !important; align-items: center !important; gap: 4px !important; padding: 0 10px !important; border-right: 1px solid rgba(0,255,234,0.2) !important; cursor: pointer !important; color: #fff !important; font-size: 13px !important; background: rgba(255,255,255,0.06) !important; }
+    .modal-box .phone-flags img { width: 20px !important; }
+    .modal-box .phone-flags-wrapper input[type="tel"] { border: none !important; background: transparent !important; box-shadow: none !important; border-radius: 0 !important; flex: 1 1 auto !important; padding: 12px 14px !important; }
 
     /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
@@ -926,6 +870,72 @@
     .mb-md { margin-bottom: var(--space-md); }
     .mb-lg { margin-bottom: var(--space-lg); }
     .mb-xl { margin-bottom: var(--space-xl); }
+
+    /* ─── RESPONSIVIDADE MOBILE ─── */
+    @media (max-width: 640px) {
+      /* Botão hero: largura total, padding menor, texto pode quebrar */
+      .btn-primary {
+        white-space: normal !important;
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+        padding: 16px 24px !important;
+        font-size: 15px !important;
+      }
+      .btn-primary.large {
+        font-size: 16px !important;
+        padding: 16px 24px !important;
+      }
+
+      /* Hero */
+      .hero { padding: 48px 0 40px; }
+      .hero-inner { text-align: center; }
+      .hero-supertitle { font-size: 11px; }
+      .hero-title { font-size: clamp(26px, 7vw, 36px); }
+      .hero-desc { font-size: 15px; margin-bottom: 28px; }
+
+      /* Badges */
+      .hero-badges { gap: 8px; }
+      .badge { font-size: 11px; padding: 5px 10px; }
+
+      /* Modal */
+      .modal-box {
+        padding: 28px 20px !important;
+        margin: 12px !important;
+        width: calc(100% - 24px) !important;
+        max-width: 100% !important;
+      }
+      .modal-title { font-size: 18px !important; }
+      .modal-sub { font-size: 13px !important; margin-bottom: 16px !important; }
+
+      /* Countdown bar */
+      .countdown-bar p { font-size: 12px; }
+
+      /* Sections */
+      .section { padding: 56px 0; }
+      .section-title { font-size: clamp(22px, 6vw, 32px); }
+      .section-desc { font-size: 15px; }
+
+      /* Data banner */
+      .data-banner {
+        flex-direction: column;
+        padding: 24px 20px;
+        gap: 16px;
+      }
+      .data-banner .btn-primary { align-self: stretch; }
+
+      /* CTA final */
+      .cta-final::before { width: 100%; }
+      .cta-final-inner { border-radius: var(--radius-lg); }
+
+      /* Especialista */
+      .especialista-wrap { gap: 28px; }
+    }
+
+    @media (max-width: 400px) {
+      .btn-primary { font-size: 14px !important; padding: 14px 16px !important; }
+      .modal-box { padding: 24px 16px !important; }
+    }
   </style>
 </head>
 <body>

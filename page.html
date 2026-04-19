@@ -119,22 +119,44 @@
       padding: 20px 28px 28px;
     }
 
-    /* Override ActiveCampaign form styles to match dark theme */
+    /* ─── FORM ACTIVEHOSTED ─── */
     .modal-form-wrap ._form_326 { width: 100% !important; }
     .modal-form-wrap ._form-content { background: transparent !important; }
-    .modal-form-wrap ._form-label { color: var(--text-muted) !important; font-family: 'Inter', sans-serif !important; font-size: 13px !important; }
+    .modal-form-wrap ._form-label {
+      color: rgba(255,255,255,0.75) !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 13px !important;
+    }
     .modal-form-wrap ._field-wrapper input,
+    .modal-form-wrap ._field-wrapper textarea,
     .modal-form-wrap ._field-wrapper select {
       background: #111 !important;
       border: 1px solid var(--border) !important;
-      color: var(--text) !important;
+      color: #fff !important;
       border-radius: 8px !important;
       font-family: 'Inter', sans-serif !important;
+      font-size: 14px !important;
+      /* Padding individual — NÃO usar shorthand para não quebrar intl-tel-input */
+      padding-top: 12px !important;
+      padding-right: 14px !important;
+      padding-bottom: 12px !important;
+    }
+    /* Padding esquerdo apenas para inputs que NÃO são telefone */
+    .modal-form-wrap ._field-wrapper input:not([type="tel"]),
+    .modal-form-wrap ._field-wrapper textarea,
+    .modal-form-wrap ._field-wrapper select {
+      padding-left: 14px !important;
+    }
+    .modal-form-wrap ._field-wrapper input::placeholder,
+    .modal-form-wrap ._field-wrapper textarea::placeholder {
+      color: rgba(255,255,255,0.35) !important;
     }
     .modal-form-wrap ._field-wrapper input:focus,
+    .modal-form-wrap ._field-wrapper textarea:focus,
     .modal-form-wrap ._field-wrapper select:focus {
       border-color: var(--cyan-border) !important;
       outline: none !important;
+      box-shadow: 0 0 12px rgba(0,255,234,0.15) !important;
     }
     .modal-form-wrap ._button-wrapper ._submit {
       background: var(--cyan) !important;
@@ -150,19 +172,30 @@
     }
     .modal-form-wrap ._button-wrapper ._submit:hover { opacity: 0.88 !important; }
 
-    /* ─── PHONE FIELD: flag/DDI ao lado do input ─── */
-    .modal-form-wrap ._field-wrapper input[type="tel"] { padding-left: 58px !important; }
-    .modal-form-wrap .iti { width: 100% !important; display: block !important; }
+    /* ─── PHONE FIELD (intl-tel-input) ─── */
+    /* O intl-tel-input injeta padding-left via inline style no input[tel].
+       Não setamos padding-left com !important — o inline style do lib prevalece. */
+    .modal-form-wrap .iti { width: 100% !important; display: block !important; position: relative !important; }
     .modal-form-wrap .iti__flag-container { position: absolute !important; top: 0 !important; bottom: 0 !important; left: 0 !important; padding: 0 !important; }
-    .modal-form-wrap .iti__selected-flag { background: rgba(255,255,255,0.06) !important; border-right: 1px solid rgba(0,255,234,0.2) !important; padding: 0 8px 0 10px !important; height: 100% !important; border-radius: 8px 0 0 8px !important; }
+    .modal-form-wrap .iti__selected-flag {
+      background: rgba(255,255,255,0.06) !important;
+      border-right: 1px solid rgba(0,255,234,0.2) !important;
+      height: 100% !important;
+      display: flex !important; align-items: center !important;
+      padding: 0 10px !important;
+      border-radius: 8px 0 0 8px !important;
+    }
     .modal-form-wrap .iti__selected-flag:hover { background: rgba(0,255,234,0.1) !important; }
     .modal-form-wrap .iti__selected-dial-code { color: rgba(255,255,255,0.8) !important; font-size: 13px !important; margin-left: 4px !important; }
     .modal-form-wrap .iti__arrow { border-top-color: rgba(255,255,255,0.5) !important; }
-    .modal-form-wrap .iti__country-list { background: #0d0d0d !important; border: 1px solid rgba(0,255,234,0.25) !important; border-radius: 8px !important; color: #fff !important; max-height: 200px !important; }
-    .modal-form-wrap .iti__country-list li:hover, .modal-form-wrap .iti__country-list .iti__highlight { background: rgba(0,255,234,0.1) !important; }
-    .modal-form-wrap .iti__dial-code { color: rgba(255,255,255,0.5) !important; }
-    /* phone-flags-wrapper (classe alternativa ActiveCampaign) */
+    .modal-form-wrap .iti__country-list { background: #0d0d0d !important; border: 1px solid rgba(0,255,234,0.25) !important; border-radius: 8px !important; color: #fff !important; max-height: 200px !important; overflow-y: auto !important; }
+    .modal-form-wrap .iti__country-list li:hover,
+    .modal-form-wrap .iti__country-list .iti__highlight { background: rgba(0,255,234,0.1) !important; }
+    .modal-form-wrap .iti__dial-code { color: rgba(255,255,255,0.45) !important; }
+    .modal-form-wrap .iti__divider { border-bottom-color: rgba(255,255,255,0.1) !important; }
+    /* phone-flags-wrapper (classe alternativa do ActiveCampaign) */
     .modal-form-wrap .phone-flags-wrapper { display: flex !important; align-items: stretch !important; background: #111 !important; border: 1px solid var(--border) !important; border-radius: 8px !important; overflow: hidden !important; }
+    .modal-form-wrap .phone-flags-wrapper:focus-within { border-color: var(--cyan-border) !important; }
     .modal-form-wrap .phone-flags { position: static !important; flex-shrink: 0 !important; display: flex !important; align-items: center !important; gap: 4px !important; padding: 0 10px !important; border-right: 1px solid rgba(0,255,234,0.2) !important; cursor: pointer !important; color: #fff !important; font-size: 13px !important; background: rgba(255,255,255,0.06) !important; }
     .modal-form-wrap .phone-flags img { width: 20px !important; }
     .modal-form-wrap .phone-flags-wrapper input[type="tel"] { border: none !important; background: transparent !important; box-shadow: none !important; border-radius: 0 !important; flex: 1 1 auto !important; padding: 12px 14px !important; }
