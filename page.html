@@ -27,12 +27,16 @@
       --bg: #000000;
       --bg2: #080808;
       --card: #0d0d0d;
-      --border: #1a1a1a;
+      --border: #1e1e1e;
       --text: #ffffff;
       --text-muted: #999999;
       --text-dim: #555555;
       --radius: 12px;
       --radius-lg: 16px;
+      /* variáveis do modal (page3) */
+      --c: #00FFEA;
+      --c-border: rgba(0,255,234,0.25);
+      --muted: #888;
     }
 
     html { scroll-behavior: smooth; }
@@ -50,155 +54,77 @@
       display: none;
       position: fixed;
       inset: 0;
-      z-index: 999;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(6px);
+      z-index: 9999;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(8px);
       align-items: center;
       justify-content: center;
       padding: 20px;
     }
     .modal-overlay.active { display: flex; }
-
     .modal-box {
-      background: #0d0d0d;
-      border: 1px solid var(--cyan-border);
+      background: #0e0e0e;
+      border: 1px solid var(--c-border);
       border-radius: 20px;
       width: 100%;
       max-width: 520px;
       max-height: 90vh;
       overflow-y: auto;
       position: relative;
-      box-shadow: 0 0 80px rgba(0,255,234,0.15);
+      box-shadow: 0 0 80px rgba(0,255,234,0.12);
       animation: modal-in 0.25s ease;
     }
-
     @keyframes modal-in {
       from { opacity: 0; transform: translateY(20px) scale(0.97); }
       to   { opacity: 1; transform: translateY(0) scale(1); }
     }
-
     .modal-header {
       padding: 28px 28px 0;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
     }
-
-    .modal-header-text h3 {
-      font-size: 20px;
-      font-weight: 900;
-      color: var(--text);
-      letter-spacing: -0.5px;
-      line-height: 1.2;
-      margin-bottom: 6px;
-    }
-
-    .modal-header-text p {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
+    .modal-header h3 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 5px; letter-spacing: -0.4px; }
+    .modal-header p { font-size: 13px; color: var(--muted); }
     .modal-close {
-      width: 32px;
-      height: 32px;
-      min-width: 32px;
-      border: 1px solid var(--border);
-      background: transparent;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: var(--text-muted);
+      width: 32px; height: 32px; min-width: 32px;
+      border: 1px solid var(--border); background: transparent;
+      border-radius: 50%; cursor: pointer; color: var(--muted);
+      display: flex; align-items: center; justify-content: center;
       transition: border-color 0.2s, color 0.2s;
     }
-    .modal-close:hover { border-color: var(--cyan-border); color: var(--cyan); }
-
-    .modal-form-wrap {
-      padding: 20px 28px 28px;
+    .modal-close:hover { border-color: var(--c-border); color: var(--c); }
+    .modal-body { padding: 20px 28px 28px; }
+    .modal-body ._form_326 { width: 100% !important; }
+    .modal-body ._form-content { background: transparent !important; }
+    .modal-body ._form-label { color: var(--muted) !important; font-family: 'Inter', sans-serif !important; font-size: 13px !important; }
+    .modal-body ._field-wrapper input, .modal-body ._field-wrapper select {
+      background: #181818 !important; border: 1px solid var(--border) !important;
+      color: var(--text) !important; border-radius: 8px !important; font-family: 'Inter', sans-serif !important;
+    }
+    .modal-body ._field-wrapper input:focus, .modal-body ._field-wrapper select:focus {
+      border-color: var(--c-border) !important; outline: none !important;
+    }
+    .modal-body ._button-wrapper ._submit {
+      background: var(--c) !important; color: #000 !important;
+      font-weight: 800 !important; font-family: 'Inter', sans-serif !important;
+      border-radius: 10px !important; border: none !important; width: 100% !important;
+      padding: 14px !important; font-size: 15px !important; cursor: pointer !important;
     }
 
-    /* ─── FORM ACTIVEHOSTED ─── */
-    .modal-form-wrap ._form_326 { width: 100% !important; }
-    .modal-form-wrap ._form-content { background: transparent !important; }
-    .modal-form-wrap ._form-label {
-      color: rgba(255,255,255,0.75) !important;
-      font-family: 'Inter', sans-serif !important;
-      font-size: 13px !important;
-    }
-    .modal-form-wrap ._field-wrapper input,
-    .modal-form-wrap ._field-wrapper textarea,
-    .modal-form-wrap ._field-wrapper select {
-      background: #111 !important;
-      border: 1px solid var(--border) !important;
-      color: #fff !important;
-      border-radius: 8px !important;
-      font-family: 'Inter', sans-serif !important;
-      font-size: 14px !important;
-      /* Padding individual — NÃO usar shorthand para não quebrar intl-tel-input */
-      padding-top: 12px !important;
-      padding-right: 14px !important;
-      padding-bottom: 12px !important;
-    }
-    /* Padding esquerdo apenas para inputs que NÃO são telefone */
-    .modal-form-wrap ._field-wrapper input:not([type="tel"]),
-    .modal-form-wrap ._field-wrapper textarea,
-    .modal-form-wrap ._field-wrapper select {
-      padding-left: 14px !important;
-    }
-    .modal-form-wrap ._field-wrapper input::placeholder,
-    .modal-form-wrap ._field-wrapper textarea::placeholder {
-      color: rgba(255,255,255,0.35) !important;
-    }
-    .modal-form-wrap ._field-wrapper input:focus,
-    .modal-form-wrap ._field-wrapper textarea:focus,
-    .modal-form-wrap ._field-wrapper select:focus {
-      border-color: var(--cyan-border) !important;
-      outline: none !important;
-      box-shadow: 0 0 12px rgba(0,255,234,0.15) !important;
-    }
-    .modal-form-wrap ._button-wrapper ._submit {
-      background: var(--cyan) !important;
-      color: #000 !important;
-      font-weight: 800 !important;
-      font-family: 'Inter', sans-serif !important;
-      border-radius: 10px !important;
-      border: none !important;
-      width: 100% !important;
-      padding: 14px !important;
-      font-size: 15px !important;
-      cursor: pointer !important;
-    }
-    .modal-form-wrap ._button-wrapper ._submit:hover { opacity: 0.88 !important; }
-
-    /* ─── PHONE FIELD (intl-tel-input) ─── */
-    /* O intl-tel-input injeta padding-left via inline style no input[tel].
-       Não setamos padding-left com !important — o inline style do lib prevalece. */
-    .modal-form-wrap .iti { width: 100% !important; display: block !important; position: relative !important; }
-    .modal-form-wrap .iti__flag-container { position: absolute !important; top: 0 !important; bottom: 0 !important; left: 0 !important; padding: 0 !important; }
-    .modal-form-wrap .iti__selected-flag {
-      background: rgba(255,255,255,0.06) !important;
-      border-right: 1px solid rgba(0,255,234,0.2) !important;
-      height: 100% !important;
-      display: flex !important; align-items: center !important;
-      padding: 0 10px !important;
-      border-radius: 8px 0 0 8px !important;
-    }
-    .modal-form-wrap .iti__selected-flag:hover { background: rgba(0,255,234,0.1) !important; }
-    .modal-form-wrap .iti__selected-dial-code { color: rgba(255,255,255,0.8) !important; font-size: 13px !important; margin-left: 4px !important; }
-    .modal-form-wrap .iti__arrow { border-top-color: rgba(255,255,255,0.5) !important; }
-    .modal-form-wrap .iti__country-list { background: #0d0d0d !important; border: 1px solid rgba(0,255,234,0.25) !important; border-radius: 8px !important; color: #fff !important; max-height: 200px !important; overflow-y: auto !important; }
-    .modal-form-wrap .iti__country-list li:hover,
-    .modal-form-wrap .iti__country-list .iti__highlight { background: rgba(0,255,234,0.1) !important; }
-    .modal-form-wrap .iti__dial-code { color: rgba(255,255,255,0.45) !important; }
-    .modal-form-wrap .iti__divider { border-bottom-color: rgba(255,255,255,0.1) !important; }
-    /* phone-flags-wrapper (classe alternativa do ActiveCampaign) */
-    .modal-form-wrap .phone-flags-wrapper { display: flex !important; align-items: stretch !important; background: #111 !important; border: 1px solid var(--border) !important; border-radius: 8px !important; overflow: hidden !important; }
-    .modal-form-wrap .phone-flags-wrapper:focus-within { border-color: var(--cyan-border) !important; }
-    .modal-form-wrap .phone-flags { position: static !important; flex-shrink: 0 !important; display: flex !important; align-items: center !important; gap: 4px !important; padding: 0 10px !important; border-right: 1px solid rgba(0,255,234,0.2) !important; cursor: pointer !important; color: #fff !important; font-size: 13px !important; background: rgba(255,255,255,0.06) !important; }
-    .modal-form-wrap .phone-flags img { width: 20px !important; }
-    .modal-form-wrap .phone-flags-wrapper input[type="tel"] { border: none !important; background: transparent !important; box-shadow: none !important; border-radius: 0 !important; flex: 1 1 auto !important; padding: 12px 14px !important; }
+    /* ─── PHONE FIELD: flag/DDI ao lado do input ─── */
+    .modal-body ._field-wrapper input[type="tel"] { padding-left: 58px !important; }
+    .modal-body .iti { width: 100% !important; display: block !important; }
+    .modal-body .iti__flag-container { position: absolute !important; top: 0 !important; bottom: 0 !important; left: 0 !important; padding: 0 !important; }
+    .modal-body .iti__selected-flag { background: rgba(255,255,255,0.06) !important; border-right: 1px solid rgba(0,255,234,0.2) !important; padding: 0 8px 0 10px !important; height: 100% !important; border-radius: 8px 0 0 8px !important; }
+    .modal-body .iti__selected-flag:hover { background: rgba(0,255,234,0.1) !important; }
+    .modal-body .iti__selected-dial-code { color: rgba(255,255,255,0.8) !important; font-size: 13px !important; margin-left: 4px !important; }
+    .modal-body .iti__arrow { border-top-color: rgba(255,255,255,0.5) !important; }
+    .modal-body .iti__country-list { background: #0d0d0d !important; border: 1px solid rgba(0,255,234,0.25) !important; border-radius: 8px !important; color: #fff !important; max-height: 200px !important; }
+    .modal-body .iti__country-list li:hover, .modal-body .iti__country-list .iti__highlight { background: rgba(0,255,234,0.1) !important; }
+    .modal-body .iti__dial-code { color: rgba(255,255,255,0.5) !important; }
+    .modal-body .phone-flags-wrapper { display: flex !important; align-items: stretch !important; background: #181818 !important; border: 1px solid var(--border) !important; border-radius: 8px !important; overflow: hidden !important; }
+    .modal-body .phone-flags { position: static !important; flex-shrink: 0 !important; display: flex !important; align-items: center !important; gap: 4px !important; padding: 0 10px !important; border-right: 1px solid rgba(0,255,234,0.2) !important; cursor: pointer !important; color: #fff !important; font-size: 13px !important; background: rgba(255,255,255,0.06) !important; }
+    .modal-body .phone-flags img { width: 20px !important; }
+    .modal-body .phone-flags-wrapper input[type="tel"] { border: none !important; background: transparent !important; box-shadow: none !important; border-radius: 0 !important; flex: 1 1 auto !important; padding: 12px 14px !important; }
 
     /* ─── BUTTONS ─── */
     .btn-primary {
@@ -619,11 +545,11 @@
 <!-- GTM noscript -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MF84VX5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<!-- ─── MODAL ─── -->
+<!-- MODAL -->
 <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
   <div class="modal-box">
     <div class="modal-header">
-      <div class="modal-header-text">
+      <div>
         <h3 id="modal-title">Garanta sua vaga gratuita</h3>
         <p>Preencha o formulário e receba o acesso no seu e-mail</p>
       </div>
@@ -631,7 +557,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
-    <div class="modal-form-wrap">
+    <div class="modal-body">
       <div class="_form_326"></div>
       <script src="https://tetraeducacao.activehosted.com/f/embed.php?id=326" charset="utf-8"></script>
     </div>
