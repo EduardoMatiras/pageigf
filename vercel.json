@@ -5,6 +5,7 @@
     { "source": "/page3", "destination": "/page3.html" },
     { "source": "/page4", "destination": "/page4.html" },
     { "source": "/page6", "destination": "/page6.html" },
-    { "source": "/page5", "destination": "/page5.html" }
+    { "source": "/page5", "destination": "/page5.html" },
+    { "source": "/page7", "destination": "/page7.html" }
   ]
 }
