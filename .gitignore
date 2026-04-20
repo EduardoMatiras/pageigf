@@ -1,0 +1,7 @@
+.vercel
+.env*.local
+.claude/settings.local.json
+.claude/worktrees/
+.agents/
+skills-lock.json
+design-system-tetra-igf.md

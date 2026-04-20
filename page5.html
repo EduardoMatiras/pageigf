@@ -12,12 +12,31 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-MF84VX5');</script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Apenas pesos utilizados: 500, 600, 700, 800 (400 e 900 removidos) + font-display:swap -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet" />
-
   <style>
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('./assets/fonts/montserrat-400.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('./assets/fonts/montserrat-600.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('./assets/fonts/montserrat-700.woff2') format('woff2');
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -920,7 +939,7 @@
   <nav class="navbar" role="banner">
     <div class="container">
       <a href="#" class="navbar-logo" aria-label="Tetra Educação">
-        <img src="https://tetraeducacao.com.br/logotetra.png" alt="Tetra Educação" width="140" height="36" fetchpriority="high" />
+        <img src="https://tetraeducacao.com.br/logotetra.webp" alt="Tetra Educação" width="140" height="36" fetchpriority="high" decoding="async" onerror="this.onerror=null;this.src='https://tetraeducacao.com.br/logotetra.png';" />
       </a>
       <button onclick="openModal()" class="navbar-cta">
         Quero minha vaga <span class="btn-arrow">→</span>
@@ -1111,10 +1130,12 @@
           <div class="especialista-photo-wrap">
             <img
               class="especialista-photo"
-              src="https://tetraeducacao.com.br/jheython.png"
+              src="https://tetraeducacao.com.br/jheython.webp"
               alt="Jheython Santana"
               width="220" height="220"
               loading="lazy"
+              decoding="async"
+              onerror="this.onerror=null;this.src='https://tetraeducacao.com.br/jheython.png';"
             />
             <div class="especialista-credential">MCT · Microsoft</div>
           </div>
@@ -1222,7 +1243,7 @@
   <!-- ─── FOOTER ─── -->
   <footer class="footer" role="contentinfo">
     <div class="footer-logo">
-      <img src="https://tetraeducacao.com.br/logotetra.png" alt="Tetra Educação" width="140" height="36" loading="lazy" />
+      <img src="https://tetraeducacao.com.br/logotetra.webp" alt="Tetra Educação" width="140" height="36" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://tetraeducacao.com.br/logotetra.png';" />
     </div>
     <p class="footer-cnpj">Tetra Educação © 2025 · CNPJ: 34.285.904/0001-22 · Todos os direitos reservados</p>
     <div class="footer-links">
