@@ -16,7 +16,27 @@
   s.parentNode.insertBefore(t,s)}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '2402736016679729');
-  fbq('track', 'PageView');
+
+  // Gera event_id único para deduplicação entre Pixel (client) e CAPI (server)
+  var _fbPageViewId = Date.now().toString(36) + Math.random().toString(36).substr(2);
+  fbq('track', 'PageView', {}, {eventID: _fbPageViewId});
+
+  // Espelha o PageView via Conversions API (server-side) — token fica seguro no servidor
+  (function(){
+    var fbp = (document.cookie.match(/_fbp=([^;]+)/) || [])[1] || '';
+    var fbc = (document.cookie.match(/_fbc=([^;]+)/) || [])[1] || '';
+    fetch('/api/fbevents', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        event_name: 'PageView',
+        event_id: _fbPageViewId,
+        event_source_url: window.location.href,
+        fbp: fbp,
+        fbc: fbc
+      })
+    });
+  })();
   </script>
   <!-- End Meta Pixel Code -->
 
@@ -1284,6 +1304,47 @@
     }
     updateCountdown();
     setInterval(updateCountdown, 1000);
+
+    // — Helper: dispara evento no Pixel (client) + CAPI (server) com deduplicação —
+    function _trackFbEvent(name) {
+      var id = Date.now().toString(36) + Math.random().toString(36).substr(2);
+      if (typeof fbq === 'function') fbq('track', name, {}, {eventID: id});
+      var fbp = (document.cookie.match(/_fbp=([^;]+)/) || [])[1] || '';
+      var fbc = (document.cookie.match(/_fbc=([^;]+)/) || [])[1] || '';
+      fetch('/api/fbevents', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          event_name: name,
+          event_id: id,
+          event_source_url: window.location.href,
+          fbp: fbp,
+          fbc: fbc
+        })
+      });
+    }
+
+    // — Lead: detecta envio do formulário ActiveCampaign via MutationObserver —
+    var _leadTracked = false;
+    new MutationObserver(function(mutations) {
+      if (_leadTracked) return;
+      for (var i = 0; i < mutations.length; i++) {
+        var nodes = mutations[i].addedNodes;
+        for (var j = 0; j < nodes.length; j++) {
+          var node = nodes[j];
+          if (node.nodeType !== 1) continue;
+          var cls = node.className || '';
+          // AC exibe ._form-thank-you após submit
+          if (cls.indexOf('_form-thank-you') !== -1 ||
+              (node.querySelector && node.querySelector('._form-thank-you'))) {
+            _leadTracked = true;
+            _trackFbEvent('Lead');
+            break;
+          }
+        }
+        if (_leadTracked) break;
+      }
+    }).observe(document.getElementById('modal'), {childList: true, subtree: true});
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(a => {
