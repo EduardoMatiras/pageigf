@@ -776,22 +776,19 @@
       from { opacity: 0; transform: translateY(20px) scale(0.97); }
       to   { opacity: 1; transform: translateY(0) scale(1); }
     }
-    .modal-header {
-      padding: 28px 28px 0;
-      display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
-    }
-    .modal-header h3 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 5px; letter-spacing: -0.4px; }
-    .modal-header p { font-size: 13px; color: var(--muted); }
+    /* botão fechar posicionado absolutamente sobre o form */
     .modal-close {
+      position: absolute; top: 12px; right: 12px;
       width: 32px; height: 32px; min-width: 32px;
-      border: 1px solid var(--border); background: transparent;
+      border: 1px solid var(--border); background: rgba(14,14,14,0.9);
       border-radius: 50%; cursor: pointer; color: var(--muted);
       display: flex; align-items: center; justify-content: center;
       transition: border-color 0.2s, color 0.2s;
+      z-index: 10;
     }
     .modal-close:hover { border-color: var(--c-border); color: var(--c); }
-    .modal-body { padding: 20px 28px 28px; }
-    .modal-body ._form_326 { width: 100% !important; }
+    .modal-body { padding: 20px 24px 24px; }
+    .modal-body ._form_328 { width: 100% !important; }
     .modal-body ._form-content { background: transparent !important; }
     .modal-body ._form-label { color: var(--muted) !important; font-family: 'Montserrat', sans-serif !important; font-size: 13px !important; }
     .modal-body ._field-wrapper input, .modal-body ._field-wrapper select {
@@ -895,14 +892,24 @@
       .badge { font-size: 11px; padding: 5px 10px; }
 
       /* Modal */
+      .modal-overlay { padding: 12px !important; }
       .modal-box {
-        padding: 28px 20px !important;
-        margin: 12px !important;
-        width: calc(100% - 24px) !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
         max-width: 100% !important;
+        border-radius: 16px !important;
       }
-      .modal-title { font-size: 18px !important; }
-      .modal-sub { font-size: 13px !important; margin-bottom: 16px !important; }
+      .modal-body { padding: 44px 16px 20px !important; }
+      /* força largura total nos elementos internos do AC */
+      .modal-body ._form_328,
+      .modal-body ._form-content,
+      .modal-body ._form-inner,
+      .modal-body form { width: 100% !important; min-width: unset !important; max-width: 100% !important; }
+      .modal-body ._field-wrapper input,
+      .modal-body ._field-wrapper select,
+      .modal-body ._button-wrapper { width: 100% !important; min-width: unset !important; }
+      .modal-body .iti { width: 100% !important; }
 
       /* Countdown bar */
       .countdown-bar p { font-size: 12px; }
@@ -930,7 +937,7 @@
 
     @media (max-width: 400px) {
       .btn-primary { font-size: 14px !important; padding: 14px 16px !important; }
-      .modal-box { padding: 24px 16px !important; }
+      .modal-body { padding: 44px 12px 16px !important; }
     }
   </style>
 </head>
@@ -939,19 +946,13 @@
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2402736016679729&ev=PageView&noscript=1" /></noscript>
 
   <!-- MODAL -->
-  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true">
     <div class="modal-box">
-      <div class="modal-header">
-        <div>
-          <h3 id="modal-title">Garanta sua vaga gratuita</h3>
-          <p>Preencha o formulário e receba o acesso no seu e-mail</p>
-        </div>
-        <button class="modal-close" onclick="closeModal()" aria-label="Fechar">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
+      <button class="modal-close" onclick="closeModal()" aria-label="Fechar">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
       <div class="modal-body">
-        <div class="_form_326"></div>
+        <div class="_form_328"></div>
         <!-- ActiveCampaign embed carregado de forma lazy via JS (ver openModal) -->
       </div>
     </div>
@@ -1272,7 +1273,7 @@
       if (!_acFormLoaded) {
         _acFormLoaded = true;
         var s = document.createElement('script');
-        s.src = 'https://tetraeducacao.activehosted.com/f/embed.php?id=326';
+        s.src = 'https://tetraeducacao.activehosted.com/f/embed.php?id=328';
         s.charset = 'utf-8';
         document.body.appendChild(s);
       }
