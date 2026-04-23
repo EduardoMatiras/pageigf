@@ -408,6 +408,26 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
     }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      background: rgba(255,255,255,0.03);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 24px clamp(20px, 5vw, 80px);
+      text-align: center;
+    }
+    .footer-cnpj {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 6px;
+    }
+    .footer-links a {
+      font-size: 12px;
+      color: rgba(255,255,255,0.50);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-links a:hover { color: var(--color-accent); }
   </style>
 </head>
 <body>
@@ -461,6 +481,14 @@
       </div>
     </div>
   </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer" role="contentinfo">
+    <p class="footer-cnpj">Tetra Educação © 2025 · CNPJ: 34.285.904/0001-22 · Todos os direitos reservados</p>
+    <div class="footer-links">
+      <a href="https://tetraeducacao.com.br/politica-de-privacidade-tetra-educacao/" target="_blank" rel="noopener">Política de Privacidade</a>
+    </div>
+  </footer>
 
   <!-- ─── SCRIPTS ─── -->
   <script>
