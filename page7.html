@@ -1265,6 +1265,83 @@
 
   <!-- ─── SCRIPTS ─── -->
   <script>
+    // ─── COLETA DE DADOS PARA ACTIVECAMPAIGN ───────────────────────────────────
+    // Mapeamento: chave interna → nome do campo AC (tag de personalização em maiúsculas)
+    // O formato injetado no form será: field[NOME_CAMPO,0]
+    var _AC_FIELD_MAP = {
+      UTM_SOURCE:   'utm_source',
+      UTM_MEDIUM:   'utm_medium',
+      UTM_CAMPAIGN: 'utm_campaign',
+      UTM_TERM:     'utm_term',
+      UTM_CONTENT:  'utm_content',
+      DISPOSITIVO:  'dispositivo',
+    };
+    // Tag aplicada a todo lead desta página
+    var _AC_TAG = 'IGF9 - 2026';
+
+    // Persiste UTMs da URL no sessionStorage (sobrevive à navegação interna)
+    (function() {
+      var p = new URLSearchParams(window.location.search);
+      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k) {
+        if (p.get(k)) sessionStorage.setItem('_igf_' + k, p.get(k));
+      });
+    })();
+
+    function _collectLeadData() {
+      var ua = navigator.userAgent;
+      var device = /Mobi|Android|iPhone|iPad/i.test(ua) ? 'Mobile' : 'Desktop';
+      return {
+        utm_source:   sessionStorage.getItem('_igf_utm_source')   || '',
+        utm_medium:   sessionStorage.getItem('_igf_utm_medium')   || '',
+        utm_campaign: sessionStorage.getItem('_igf_utm_campaign') || '',
+        utm_term:     sessionStorage.getItem('_igf_utm_term')     || '',
+        utm_content:  sessionStorage.getItem('_igf_utm_content')  || '',
+        dispositivo:  device,
+      };
+    }
+
+    // Injeta campos ocultos + tag no formulário AC antes do envio
+    function _injectACFields(form) {
+      var data = _collectLeadData();
+
+      // Campos customizados
+      Object.keys(_AC_FIELD_MAP).forEach(function(acFieldName) {
+        var dataKey = _AC_FIELD_MAP[acFieldName];
+        var name = 'field[' + acFieldName + ',0]';
+        var el = form.querySelector('input[name="' + name + '"]');
+        if (!el) {
+          el = document.createElement('input');
+          el.type = 'hidden';
+          el.name = name;
+          form.appendChild(el);
+        }
+        el.value = data[dataKey] || '';
+      });
+
+      // Tag do lead
+      var tagEl = form.querySelector('input[name="tags"]');
+      if (!tagEl) {
+        tagEl = document.createElement('input');
+        tagEl.type = 'hidden';
+        tagEl.name = 'tags';
+        form.appendChild(tagEl);
+      }
+      tagEl.value = _AC_TAG;
+    }
+
+    // Observa o AC form renderizar no DOM e registra listener de submit
+    var _acFieldsWired = false;
+    new MutationObserver(function(mutations, obs) {
+      if (_acFieldsWired) return;
+      var form = document.querySelector('._form_328 form');
+      if (!form) return;
+      _acFieldsWired = true;
+      obs.disconnect();
+      _injectACFields(form);
+      form.addEventListener('submit', function() { _injectACFields(form); }, true);
+    }).observe(document.getElementById('modal'), { childList: true, subtree: true });
+    // ─── FIM COLETA DE DADOS ───────────────────────────────────────────────────
+
     // Modal — ActiveCampaign embed carregado de forma lazy (só na 1ª abertura)
     var _acFormLoaded = false;
     function openModal() {
