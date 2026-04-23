@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IGF — Imersão Gestor do Futuro | Tetra Educação</title>
+  <meta name="description" content="Em 4 aulas ao vivo, aprenda as ferramentas de gestão usadas por líderes de alta performance. 100% gratuito, com certificado." />
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2402736016679729');
+
+  var _fbPageViewId = Date.now().toString(36) + Math.random().toString(36).substr(2);
+  fbq('track', 'PageView', {}, {eventID: _fbPageViewId});
+
+  (function(){
+    var fbp = (document.cookie.match(/_fbp=([^;]+)/) || [])[1] || '';
+    var fbc = (document.cookie.match(/_fbc=([^;]+)/) || [])[1] || '';
+    fetch('/api/fbevents', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        event_name: 'PageView',
+        event_id: _fbPageViewId,
+        event_source_url: window.location.href,
+        fbp: fbp,
+        fbc: fbc
+      })
+    });
+  })();
+  </script>
+  <!-- End Meta Pixel Code -->
+
+  <style>
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('./assets/fonts/montserrat-400.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('./assets/fonts/montserrat-600.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('./assets/fonts/montserrat-700.woff2') format('woff2');
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg:             #02050d;
+      --color-accent:         #00ffea;
+      --color-accent-hover:   #00e6d4;
+      --color-accent-glow:    rgba(0, 255, 234, 0.25);
+      --color-accent-bg:      rgba(0, 255, 234, 0.08);
+      --color-accent-bg-md:   rgba(0, 255, 234, 0.15);
+      --color-accent-border:  rgba(0, 255, 234, 0.40);
+      --color-text-primary:   #ffffff;
+      --color-text-secondary: rgba(255, 255, 255, 0.60);
+      --color-text-muted:     rgba(255, 255, 255, 0.35);
+      --color-surface-01:     rgba(255, 255, 255, 0.04);
+      --color-border:         rgba(255, 255, 255, 0.10);
+      --font-family:          'Montserrat', sans-serif;
+      --text-display:         clamp(32px, 5vw, 56px);
+      --text-body-lg:         18px;
+      --text-body:            16px;
+      --text-btn:             16px;
+      --space-sm:   8px;
+      --space-md:   16px;
+      --radius-sm:   6px;
+      --radius-md:   12px;
+      --radius-lg:   16px;
+      --radius-full: 9999px;
+      --shadow-btn:       0 0 20px rgba(0, 255, 234, 0.30);
+      --shadow-btn-hover: 0 0 32px rgba(0, 255, 234, 0.50);
+      --c: #00FFEA;
+      --c-border: rgba(0,255,234,0.25);
+      --border: #1e1e1e;
+      --text: #ffffff;
+      --muted: #888;
+    }
+
+    html { scroll-behavior: smooth; height: 100%; }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 5vw, 80px);
+    }
+
+    /* ─── COUNTDOWN BAR ─── */
+    .countdown-bar {
+      background: linear-gradient(90deg, rgba(0,255,234,0.12) 0%, rgba(0,255,234,0.06) 100%);
+      border-bottom: 1px solid rgba(0,255,234,0.20);
+      padding: 10px 0;
+      text-align: center;
+    }
+    .countdown-bar p {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-accent);
+      letter-spacing: 0.05em;
+    }
+    .countdown-bar span {
+      color: #fff;
+      font-weight: 800;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: clamp(64px, 10vw, 120px) 0 clamp(48px, 8vw, 96px);
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 600px;
+      background: radial-gradient(ellipse at center, rgba(0,255,234,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      max-width: 820px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero-supertitle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 24px;
+    }
+    .hero-supertitle::before,
+    .hero-supertitle::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--color-accent);
+      opacity: 0.5;
+    }
+    .hero-title {
+      font-size: var(--text-display);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--color-text-primary);
+      margin-bottom: 24px;
+    }
+    .hero-title .accent { color: var(--color-accent); }
+    .hero-desc {
+      font-size: var(--text-body-lg);
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      max-width: 680px;
+      margin: 0 auto 40px;
+    }
+    .hero-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    /* ─── BUTTONS ─── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--color-accent);
+      color: var(--color-bg);
+      font-family: var(--font-family);
+      font-size: var(--text-btn);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 18px 44px;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: var(--shadow-btn);
+      transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-primary:hover {
+      background: var(--color-accent-hover);
+      box-shadow: var(--shadow-btn-hover);
+      transform: translateY(-2px);
+    }
+    .btn-primary:active { transform: translateY(0); box-shadow: var(--shadow-btn); }
+    .btn-primary.large { font-size: 18px; padding: 20px 56px; }
+    .btn-arrow { font-size: 18px; transition: transform 0.2s; }
+    .btn-primary:hover .btn-arrow { transform: translateX(4px); }
+
+    /* ─── BADGE / PILL ─── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--color-accent-bg);
+      border: 1px solid var(--color-accent-border);
+      color: var(--color-accent);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+    }
+
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #0e0e0e;
+      border: 1px solid var(--c-border);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 520px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 0 80px rgba(0,255,234,0.12);
+      animation: modal-in 0.25s ease;
+    }
+    @keyframes modal-in {
+      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .modal-close {
+      position: absolute; top: 12px; right: 12px;
+      width: 32px; height: 32px; min-width: 32px;
+      border: 1px solid var(--border); background: rgba(14,14,14,0.9);
+      border-radius: 50%; cursor: pointer; color: var(--muted);
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, color 0.2s;
+      z-index: 10;
+    }
+    .modal-close:hover { border-color: var(--c-border); color: var(--c); }
+    .modal-body { padding: 20px 24px 24px; }
+    .modal-body ._form_328 { width: 100% !important; }
+    .modal-body ._form-content { background: transparent !important; }
+    .modal-body ._form-label { color: var(--muted) !important; font-family: 'Montserrat', sans-serif !important; font-size: 13px !important; }
+    .modal-body ._field-wrapper input, .modal-body ._field-wrapper select {
+      background: #181818 !important; border: 1px solid var(--border) !important;
+      color: var(--text) !important; border-radius: 8px !important; font-family: 'Montserrat', sans-serif !important;
+    }
+    .modal-body ._field-wrapper input:focus, .modal-body ._field-wrapper select:focus {
+      border-color: var(--c-border) !important; outline: none !important;
+    }
+    .modal-body ._button-wrapper ._submit {
+      background: var(--c) !important; color: #000 !important;
+      font-weight: 800 !important; font-family: 'Montserrat', sans-serif !important;
+      border-radius: 10px !important; border: none !important; width: 100% !important;
+      padding: 14px !important; font-size: 15px !important; cursor: pointer !important;
+    }
+    .modal-body ._field-wrapper input[type="tel"] { padding-left: 58px !important; }
+    .modal-body .iti { width: 100% !important; display: block !important; }
+    .modal-body .iti__flag-container { position: absolute !important; top: 0 !important; bottom: 0 !important; left: 0 !important; padding: 0 !important; }
+    .modal-body .iti__selected-flag { background: rgba(255,255,255,0.06) !important; border-right: 1px solid rgba(0,255,234,0.2) !important; padding: 0 8px 0 10px !important; height: 100% !important; border-radius: 8px 0 0 8px !important; }
+    .modal-body .iti__selected-flag:hover { background: rgba(0,255,234,0.1) !important; }
+    .modal-body .iti__selected-dial-code { color: rgba(255,255,255,0.8) !important; font-size: 13px !important; margin-left: 4px !important; }
+    .modal-body .iti__arrow { border-top-color: rgba(255,255,255,0.5) !important; }
+    .modal-body .iti__country-list { background: #0d0d0d !important; border: 1px solid rgba(0,255,234,0.25) !important; border-radius: 8px !important; color: #fff !important; max-height: 200px !important; }
+    .modal-body .iti__country-list li:hover, .modal-body .iti__country-list .iti__highlight { background: rgba(0,255,234,0.1) !important; }
+    .modal-body .iti__dial-code { color: rgba(255,255,255,0.5) !important; }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-inner > * {
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
+    .hero-inner > *:nth-child(2) { animation-delay: 0.15s; }
+    .hero-inner > *:nth-child(3) { animation-delay: 0.25s; }
+    .hero-inner > *:nth-child(4) { animation-delay: 0.35s; }
+    .hero-inner > *:nth-child(5) { animation-delay: 0.45s; }
+
+    @keyframes pulse-border {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0,255,234,0.3); }
+      50%       { box-shadow: 0 0 0 6px rgba(0,255,234,0); }
+    }
+    .btn-primary.pulse {
+      animation: pulse-border 2.5s ease infinite;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 3px;
+    }
+
+    #countdown-timer { font-weight: 800; color: #fff; }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 640px) {
+      .btn-primary {
+        white-space: normal !important;
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+        padding: 16px 24px !important;
+        font-size: 15px !important;
+      }
+      .btn-primary.large {
+        font-size: 16px !important;
+        padding: 16px 24px !important;
+      }
+      .hero { padding: 48px 0 40px; }
+      .hero-supertitle { font-size: 11px; }
+      .hero-title { font-size: clamp(26px, 7vw, 36px); }
+      .hero-desc { font-size: 15px; margin-bottom: 28px; }
+      .hero-badges { gap: 8px; }
+      .badge { font-size: 11px; padding: 5px 10px; }
+      .modal-overlay { padding: 12px !important; }
+      .modal-box {
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 16px !important;
+      }
+      .modal-body { padding: 44px 16px 20px !important; }
+      .modal-body ._form_328,
+      .modal-body ._form-content,
+      .modal-body ._form-inner,
+      .modal-body form { width: 100% !important; min-width: unset !important; max-width: 100% !important; }
+      .modal-body ._field-wrapper input,
+      .modal-body ._field-wrapper select,
+      .modal-body ._button-wrapper { width: 100% !important; min-width: unset !important; }
+      .modal-body .iti { width: 100% !important; }
+      .countdown-bar p { font-size: 12px; }
+    }
+
+    @media (max-width: 400px) {
+      .btn-primary { font-size: 14px !important; padding: 14px 16px !important; }
+      .modal-body { padding: 44px 12px 16px !important; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Meta Pixel noscript -->
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2402736016679729&ev=PageView&noscript=1" /></noscript>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()" aria-label="Fechar">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="modal-body">
+        <div class="_form_328"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── COUNTDOWN BAR ─── -->
+  <div class="countdown-bar">
+    <p>🔴 Evento ao vivo | Vagas se encerrando <span id="countdown-timer">carregando...</span></p>
+  </div>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero" aria-label="Apresentação do evento">
+    <div class="container">
+      <div class="hero-inner">
+
+        <div class="hero-supertitle">Imersão Gestor do Futuro</div>
+
+        <h1 class="hero-title">
+          Treinamento prático para <span class="break">gestores</span>
+        </h1>
+
+        <p class="hero-desc">
+          Em <strong>4 aulas gratuitas</strong>, você aprende as ferramentas que tiram você do operacional e colocam sua equipe no trilho, sem cobrar todo dia.
+        </p>
+
+        <div>
+          <button onclick="openModal()" class="btn-primary large pulse" id="hero-cta">
+            Quero minha vaga gratuita <span class="btn-arrow">→</span>
+          </button>
+        </div>
+
+        <div class="hero-badges">
+          <span class="badge">✓ 100% Gratuito</span>
+          <span class="badge">⚡ Vagas Limitadas</span>
+          <span class="badge">🎓 Com Certificado</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SCRIPTS ─── -->
+  <script>
+    // ─── COLETA DE DADOS PARA ACTIVECAMPAIGN ───────────────────────────────────
+    var _AC_FIELD_MAP = {
+      UTM_SOURCE:   'utm_source',
+      UTM_MEDIUM:   'utm_medium',
+      UTM_CAMPAIGN: 'utm_campaign',
+      UTM_TERM:     'utm_term',
+      UTM_CONTENT:  'utm_content',
+      DISPOSITIVO:  'dispositivo',
+    };
+    var _AC_TAG = 'IGF9 - 2026';
+
+    (function() {
+      var p = new URLSearchParams(window.location.search);
+      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k) {
+        if (p.get(k)) sessionStorage.setItem('_igf_' + k, p.get(k));
+      });
+    })();
+
+    function _collectLeadData() {
+      var ua = navigator.userAgent;
+      var device = /Mobi|Android|iPhone|iPad/i.test(ua) ? 'Mobile' : 'Desktop';
+      return {
+        utm_source:   sessionStorage.getItem('_igf_utm_source')   || '',
+        utm_medium:   sessionStorage.getItem('_igf_utm_medium')   || '',
+        utm_campaign: sessionStorage.getItem('_igf_utm_campaign') || '',
+        utm_term:     sessionStorage.getItem('_igf_utm_term')     || '',
+        utm_content:  sessionStorage.getItem('_igf_utm_content')  || '',
+        dispositivo:  device,
+      };
+    }
+
+    function _injectACFields(form) {
+      var data = _collectLeadData();
+      Object.keys(_AC_FIELD_MAP).forEach(function(acFieldName) {
+        var dataKey = _AC_FIELD_MAP[acFieldName];
+        var name = 'field[' + acFieldName + ',0]';
+        var el = form.querySelector('input[name="' + name + '"]');
+        if (!el) {
+          el = document.createElement('input');
+          el.type = 'hidden';
+          el.name = name;
+          form.appendChild(el);
+        }
+        el.value = data[dataKey] || '';
+      });
+      var tagEl = form.querySelector('input[name="tags"]');
+      if (!tagEl) {
+        tagEl = document.createElement('input');
+        tagEl.type = 'hidden';
+        tagEl.name = 'tags';
+        form.appendChild(tagEl);
+      }
+      tagEl.value = _AC_TAG;
+    }
+
+    var _acFieldsWired = false;
+    new MutationObserver(function(mutations, obs) {
+      if (_acFieldsWired) return;
+      var form = document.querySelector('._form_328 form');
+      if (!form) return;
+      _acFieldsWired = true;
+      obs.disconnect();
+      _injectACFields(form);
+      form.addEventListener('submit', function() { _injectACFields(form); }, true);
+    }).observe(document.getElementById('modal'), { childList: true, subtree: true });
+    // ─── FIM COLETA DE DADOS ───────────────────────────────────────────────────
+
+    var _acFormLoaded = false;
+    function openModal() {
+      document.getElementById('modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+      if (!_acFormLoaded) {
+        _acFormLoaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://tetraeducacao.activehosted.com/f/embed.php?id=328';
+        s.charset = 'utf-8';
+        document.body.appendChild(s);
+      }
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    function updateCountdown() {
+      const target = new Date('2025-04-27T19:30:00-03:00');
+      const now = new Date();
+      const diff = target - now;
+      const el = document.getElementById('countdown-timer');
+      if (!el) return;
+      if (diff <= 0) { el.textContent = 'em breve!'; return; }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      el.textContent = `${d}d ${h}h ${m}m ${s}s`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    function _trackFbEvent(name) {
+      var id = Date.now().toString(36) + Math.random().toString(36).substr(2);
+      if (typeof fbq === 'function') fbq('track', name, {}, {eventID: id});
+      var fbp = (document.cookie.match(/_fbp=([^;]+)/) || [])[1] || '';
+      var fbc = (document.cookie.match(/_fbc=([^;]+)/) || [])[1] || '';
+      fetch('/api/fbevents', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          event_name: name,
+          event_id: id,
+          event_source_url: window.location.href,
+          fbp: fbp,
+          fbc: fbc
+        })
+      });
+    }
+
+    var _leadTracked = false;
+    new MutationObserver(function(mutations) {
+      if (_leadTracked) return;
+      for (var i = 0; i < mutations.length; i++) {
+        var nodes = mutations[i].addedNodes;
+        for (var j = 0; j < nodes.length; j++) {
+          var node = nodes[j];
+          if (node.nodeType !== 1) continue;
+          var cls = node.className || '';
+          if (cls.indexOf('_form-thank-you') !== -1 ||
+              (node.querySelector && node.querySelector('._form-thank-you'))) {
+            _leadTracked = true;
+            _trackFbEvent('Lead');
+            break;
+          }
+        }
+        if (_leadTracked) break;
+      }
+    }).observe(document.getElementById('modal'), {childList: true, subtree: true});
+  </script>
+
+</body>
+</html>
