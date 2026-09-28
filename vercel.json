@@ -6,6 +6,16 @@
     { "source": "/page4", "destination": "/page4.html" },
     { "source": "/page6", "destination": "/page6.html" },
     { "source": "/page5", "destination": "/page5.html" },
-    { "source": "/page7", "destination": "/page7.html" }
+    { "source": "/page7", "destination": "/page7.html" },
+    { "source": "/page8", "destination": "/page8.html" },
+    { "source": "/page9", "destination": "/page9.html" },
+    { "source": "/d1", "destination": "/igf-d1.html" },
+    { "source": "/d2", "destination": "/igf-d2.html" },
+    { "source": "/d3", "destination": "/igf-d3.html" },
+    { "source": "/d4", "destination": "/igf-d4.html" },
+    { "source": "/d5", "destination": "/igf-d5.html" },
+    { "source": "/d6", "destination": "/igf-d6.html" },
+    { "source": "/d7", "destination": "/igf-d7.html" },
+    { "source": "/d8", "destination": "/igf-d8.html" }
   ]
 }

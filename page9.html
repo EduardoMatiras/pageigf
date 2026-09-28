@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Treinamento de Atualização em Gestão e Liderança | Tetra Educação</title>
+  <meta name="description" content="Participe do treinamento que te atualiza com os temas em alta na gestão em 2026: Ferramentas, IA e Gestão de Pessoas." />
+  
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2402736016679729');
+
+  var _fbPageViewId = Date.now().toString(36) + Math.random().toString(36).substr(2);
+  fbq('track', 'PageView', {}, {eventID: _fbPageViewId});
+
+  (function(){
+    var fbp = (document.cookie.match(/_fbp=([^;]+)/) || [])[1] || '';
+    var fbc = (document.cookie.match(/_fbc=([^;]+)/) || [])[1] || '';
+    fetch('/api/fbevents', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        event_name: 'PageView',
+        event_id: _fbPageViewId,
+        event_source_url: window.location.href,
+        fbp: fbp,
+        fbc: fbc
+      })
+    });
+  })();
+  </script>
+  <!-- End Meta Pixel Code -->
+
+  <style>
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('./assets/fonts/montserrat-400.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('./assets/fonts/montserrat-600.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('./assets/fonts/montserrat-700.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 800;
+      font-display: swap;
+      src: url('./assets/fonts/montserrat-700.woff2') format('woff2'); /* Fallback for 800 */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg:             #000000;
+      --color-surface:        #0a0a0a;
+      --color-cta:            #7cff00;
+      --color-cta-hover:      #6ee600;
+      --color-accent:         #00ffea;
+      --color-accent-hover:   #00e6d4;
+      --color-accent-bg:      rgba(0, 255, 234, 0.08);
+      --color-accent-border:  rgba(0, 255, 234, 0.40);
+      --color-text-primary:   #ffffff;
+      --color-text-secondary: rgba(255, 255, 255, 0.70);
+      --color-text-muted:     rgba(255, 255, 255, 0.45);
+      --color-border:         rgba(255, 255, 255, 0.10);
+      --font-family:          'Montserrat', sans-serif;
+      --text-display:         clamp(32px, 5vw, 56px);
+      --text-h2:              clamp(28px, 4vw, 42px);
+      --text-h3:              clamp(22px, 3vw, 28px);
+      --text-body-lg:         18px;
+      --text-body:            16px;
+      --shadow-btn:           0 0 20px rgba(0, 255, 234, 0.30);
+      --shadow-btn-hover:     0 0 32px rgba(0, 255, 234, 0.50);
+      --radius-md:            12px;
+      --radius-lg:            20px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-family);
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 5vw, 80px);
+      position: relative;
+      z-index: 1;
+    }
+
+    section { padding: clamp(60px, 8vw, 100px) 0; }
+
+    /* ─── BUTTONS & BADGES ─── */
+    .btn-primary {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-cta);
+      color: #000;
+      font-family: var(--font-family);
+      font-size: clamp(19px, 2.5vw, 22px);
+      font-weight: 700;
+      text-transform: none;
+      letter-spacing: 0;
+      padding: 14px 58px 14px 58px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: none;
+      transition: background 0.2s ease;
+      white-space: nowrap;
+      width: fit-content;
+      max-width: min(100%, 340px);
+      margin: 0 auto;
+      text-align: center;
+    }
+    .btn-primary:hover {
+      background: var(--color-cta-hover);
+      transform: none;
+      box-shadow: none;
+    }
+    .btn-primary:active {
+      transform: none;
+      box-shadow: none;
+    }
+    .btn-primary .btn-icon-circle {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      width: 44px;
+      height: 44px;
+      background: #000;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #fff;
+    }
+    .btn-primary .btn-icon-circle svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+    }
+
+    .pulse { animation: pulse-border 2.5s ease infinite; }
+    @keyframes pulse-border {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(124, 255, 0, 0.35); }
+      50% { box-shadow: 0 0 0 8px rgba(124, 255, 0, 0); }
+    }
+
+    .badge-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--color-accent-bg);
+      border: 1px solid var(--color-accent-border);
+      color: var(--color-accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 99px;
+    }
+
+    /* ─── HIGHLIGHT TEXT ─── */
+    .highlight { color: var(--color-accent); }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: clamp(40px, 6vw, 64px);
+    }
+    .section-title {
+      font-size: var(--text-h2);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--color-accent);
+      margin: 20px auto 0;
+      border-radius: 2px;
+    }
+
+    /* ─── HEADER BAR ─── */
+    .top-bar {
+      background: linear-gradient(90deg, rgba(0,255,234,0.1) 0%, transparent 100%);
+      border-bottom: 1px solid var(--color-accent-border);
+      padding: 12px 0;
+      text-align: center;
+    }
+    .top-bar-text {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-accent);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .top-bar-text span { color: #fff; }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      padding: clamp(520px, 48vw, 800px) 0 clamp(60px, 8vw, 100px);
+      text-align: center;
+      background-image: url('./assets/page_igf_desk.jpg');
+      background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, var(--color-bg) 98%);
+      pointer-events: none; z-index: 0;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 1000px; height: 600px;
+      background: radial-gradient(circle at center, rgba(0,255,234,0.08) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero-subtitle {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .hero-subtitle::before, .hero-subtitle::after {
+      content: ''; width: 40px; height: 1px; background: var(--color-accent); opacity: 0.5;
+    }
+    .hero-title {
+      font-size: var(--text-display);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .hero-desc {
+      font-size: var(--text-body-lg);
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      max-width: 760px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+    .hero-cta-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-date {
+      font-size: 14px;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .hero-trust {
+      display: none;
+      margin-top: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.85);
+      letter-spacing: 0.02em;
+    }
+    /* ─── BENEFITS (WHAT WILL CHANGE) ─── */
+    .benefits {
+      background: #0d0d0d;
+      border-top: none;
+      border-bottom: none;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .benefit-card {
+      background: #000;
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 32px;
+      border-radius: 8px;
+      transition: transform 0.3s, background 0.3s, border-color 0.3s;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255,255,255,0.3);
+    }
+    .benefit-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .benefit-icon {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: rgba(0, 255, 234, 0.1);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00ffea;
+    }
+    .benefit-header h3 {
+      font-size: clamp(18px, 2vw, 20px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin: 0;
+    }
+    .benefit-desc {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+    
+    @media (max-width: 768px) {
+      .benefits-grid {
+        display: flex;
+        flex-direction: column;
+      }
+      .benefit-card.card-1 { order: 2; } /* parar de apagar incêndio */
+      .benefit-card.card-2 { order: 3; } /* equipe entregar no prazo */
+      .benefit-card.card-3 { order: 1; } /* +10 horas */
+      .benefit-card.card-4 { order: 4; } /* líder referência */
+      .benefit-card {
+        padding: 24px;
+      }
+    }
+
+    /* ─── SCHEDULE (O QUE VOCÊ VAI APRENDER) ─── */
+    .schedule .section-title::after { display: none; }
+    .schedule .section-title {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 500;
+    }
+    .schedule .section-title strong {
+      font-weight: 800;
+      color: #fff;
+    }
+    .schedule-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 920px;
+      margin: 0 auto 60px;
+    }
+    .class-card {
+      display: flex;
+      flex-direction: column;
+      background: #000;
+      border: 1px solid var(--color-accent);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .class-thumb {
+      width: 100%;
+      overflow: hidden;
+    }
+    .class-thumb img {
+      width: 100%;
+      height: auto;
+      display: block;
+      vertical-align: middle;
+    }
+    .class-body {
+      padding: 20px;
+    }
+    .class-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .class-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .class-badge--aula {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+    .class-badge--aula .live-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+    .class-badge--date {
+      background: rgba(255, 255, 255, 0.92);
+      color: #111;
+      font-weight: 600;
+    }
+    .class-title {
+      font-size: clamp(18px, 2.5vw, 22px);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+    .class-desc {
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.6;
+      font-weight: 400;
+    }
+    @media (min-width: 768px) {
+      .class-card {
+        flex-direction: row;
+        align-items: center;
+      }
+      .class-thumb {
+        width: 42%;
+        max-width: 380px;
+        min-width: 280px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #000;
+      }
+      .class-thumb img {
+        width: 100%;
+        height: auto;
+        max-height: none;
+        object-fit: contain;
+        object-position: center;
+      }
+      .class-body {
+        flex: 1;
+        padding: 28px 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+
+    /* ─── ABOUT EXPERT ─── */
+    .about {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .about-container {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+    .about-image {
+      flex: 0 0 auto;
+      position: relative;
+      width: min(100%, 420px);
+      max-width: 420px;
+      aspect-ratio: 1 / 1;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      object-position: center 22%;
+      display: block;
+      transform: scale(1.2);
+      transform-origin: center;
+    }
+    .about-image::after {
+      content: '';
+      position: absolute;
+      inset: -16px;
+      border: 2px solid var(--color-accent-border);
+      border-radius: var(--radius-lg);
+      z-index: -1;
+      transform: translate(16px, 16px);
+      pointer-events: none;
+    }
+    .about-content {
+      flex: 1;
+    }
+    .about-title {
+      font-size: var(--text-h2);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .about-subtitle {
+      font-size: 18px;
+      color: var(--color-accent);
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+    .about-text p {
+      font-size: 16px;
+      color: var(--color-text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    .about-text strong { color: #fff; }
+
+    /* ─── WHY PARTICIPATE ─── */
+    .why-participate {
+      text-align: center;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+      text-align: left;
+    }
+    .why-item {
+      display: flex;
+      gap: 16px;
+    }
+    .why-icon {
+      color: var(--color-accent);
+      flex-shrink: 0;
+    }
+    .why-text {
+      color: var(--color-text-secondary);
+      font-size: 16px;
+    }
+    .why-text strong { color: #fff; display: block; margin-bottom: 4px; }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      background: #010308;
+      border-top: 1px solid var(--color-border);
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .footer-cnpj {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-bottom: 12px;
+    }
+    .footer-links a {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--color-accent); }
+
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #0a0e17;
+      border: 1px solid var(--color-accent-border);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 520px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 0 60px rgba(0,255,234,0.15);
+      animation: modal-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes modal-in {
+      from { opacity: 0; transform: translateY(40px) scale(0.95); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50%; cursor: pointer; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; z-index: 10;
+    }
+    .modal-close:hover { background: var(--color-accent-bg); color: var(--color-accent); border-color: var(--color-accent); }
+    .modal-body { padding: 30px; }
+    
+    /* ActiveCampaign Form Overrides inside Modal */
+    .modal-body ._form_328 { width: 100% !important; margin: 0 !important; }
+    .modal-body ._form-content { background: transparent !important; padding: 0 !important; }
+    .modal-body ._form-label { color: rgba(255,255,255,0.8) !important; font-family: 'Montserrat', sans-serif !important; font-size: 14px !important; font-weight: 600 !important; margin-bottom: 8px !important; }
+    .modal-body ._field-wrapper input, .modal-body ._field-wrapper select {
+      background: rgba(0,0,0,0.5) !important; border: 1px solid rgba(255,255,255,0.15) !important;
+      color: #fff !important; border-radius: 10px !important; font-family: 'Montserrat', sans-serif !important;
+      padding: 14px 16px !important; font-size: 15px !important; transition: all 0.2s !important;
+    }
+    .modal-body ._field-wrapper input:focus, .modal-body ._field-wrapper select:focus {
+      border-color: var(--color-accent) !important; outline: none !important; box-shadow: 0 0 0 3px rgba(0,255,234,0.1) !important;
+    }
+    .modal-body ._button-wrapper ._submit {
+      background: var(--color-cta) !important; color: #000 !important;
+      font-weight: 700 !important; font-family: 'Montserrat', sans-serif !important; text-transform: none !important; letter-spacing: 0 !important;
+      border-radius: 999px !important; border: none !important; width: 100% !important;
+      padding: 18px 24px !important; font-size: 18px !important; cursor: pointer !important;
+      transition: background 0.2s !important; margin-top: 10px !important;
+    }
+    .modal-body ._button-wrapper ._submit:hover {
+      background: var(--color-cta-hover) !important; transform: none !important; box-shadow: none !important;
+    }
+    
+    /* Intl-Tel-Input Overrides for Form */
+    .modal-body .iti { width: 100% !important; }
+    .modal-body .iti__flag-container { padding: 0 !important; }
+    .modal-body .iti__selected-flag { background: rgba(255,255,255,0.05) !important; border-right: 1px solid rgba(255,255,255,0.1) !important; border-radius: 10px 0 0 10px !important; padding: 0 12px !important; }
+    .modal-body .iti__selected-dial-code { color: #fff !important; font-family: 'Montserrat', sans-serif !important; }
+    .modal-body .iti__country-list { background: #111 !important; border: 1px solid var(--color-border) !important; border-radius: 10px !important; color: #fff !important; }
+    .modal-body .iti__country-list li:hover, .modal-body .iti__country-list .iti__highlight { background: rgba(0,255,234,0.1) !important; }
+    .modal-body .iti input, .modal-body input#phone { padding-left: 120px !important; }
+
+    @media (min-width: 641px) {
+      .top-bar { display: none; }
+      .hero .badge-group { display: none; }
+      .hero-trust {
+        display: block;
+        text-align: center;
+      }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .about-container { flex-direction: column; text-align: center; gap: 40px; }
+      .about-image::after { display: none; }
+      .about-image {
+        width: min(100%, 320px);
+        max-width: 320px;
+        margin: 0 auto;
+      }
+      .section-title::after { margin: 20px auto 0; }
+    }
+    @media (max-width: 640px) {
+      body::before { display: none; }
+
+      .top-bar { display: none; }
+
+      .container {
+        padding: 0 20px;
+      }
+
+      .hero {
+        background-color: #000;
+        background-image: url('./assets/page_igf_mobile.jpg');
+        background-size: 100% auto;
+        background-position: top center;
+        background-repeat: no-repeat;
+        padding: clamp(210px, 75vw, 420px) 0 40px;
+      }
+      .hero::before { display: none; }
+      .hero::after { display: none; }
+
+      .hero .container {
+        width: 100%;
+        padding: 0 20px;
+      }
+
+      .hero-subtitle {
+        display: none;
+      }
+      .hero-title {
+        font-size: clamp(19px, 5.8vw, 28px);
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 16px;
+        letter-spacing: -0.02em;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-desc {
+        font-size: 15px;
+        line-height: 1.55;
+        color: rgba(255, 255, 255, 0.92);
+        margin-bottom: 24px;
+        max-width: 100%;
+      }
+      .hero-desc .highlight {
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .hero-cta-wrapper {
+        width: 100%;
+        align-items: center;
+      }
+
+      .btn-primary {
+        width: fit-content;
+        max-width: min(100%, 320px);
+        font-size: 20px;
+        padding: 14px 54px 14px 54px;
+      }
+      .btn-primary .btn-icon-circle {
+        width: 42px;
+        height: 42px;
+        right: 6px;
+      }
+      .btn-primary.pulse { animation: none; }
+
+      .badge-group { display: none; }
+      .hero-trust {
+        display: block;
+        text-align: center;
+      }
+
+      .modal-box { border-radius: 16px; }
+      .modal-body { padding: 24px 20px; }
+      section { padding: 60px 0; }
+      .benefits { border-top: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Meta Pixel noscript -->
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2402736016679729&ev=PageView&noscript=1" /></noscript>
+
+  <!-- ─── TOP BAR ─── -->
+  <div class="top-bar">
+    <div class="container">
+      <p class="top-bar-text">Treinamento Gratuito de <span>25 a 28 de Maio</span></p>
+    </div>
+  </div>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-date">Treinamento Gratuito de 25 a 28 de Maio</p>
+        <h1 class="hero-title">Treinamento de atualização<br>em gestão e liderança</h1>
+        <h2 class="hero-desc">Participe do treinamento que te atualiza com os temas em alta na gestão em 2026: Ferramentas, IA e Gestão de Pessoas.</h2>
+        
+        <div class="hero-cta-wrapper">
+          <button type="button" onclick="openModal()" class="btn-primary pulse">
+            <span>Quero Participar</span>
+            <span class="btn-icon-circle" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg>
+            </span>
+          </button>
+
+          <div class="badge-group">
+            <span class="badge">✓ 100% Gratuito</span>
+            <span class="badge">⚡ Vagas Limitadas</span>
+            <span class="badge">🎓 Com Certificado</span>
+          </div>
+          <p class="hero-trust">100% gratuito | Vagas limitadas | Certificado</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── BENEFITS ─── -->
+  <section class="benefits">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">O que vai mudar na sua gestão<br>depois dessas 4 aulas?</h2>
+      </div>
+      
+      <div class="benefits-grid">
+        <div class="benefit-card card-1">
+          <div class="benefit-header">
+            <div class="benefit-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/><path d="M6.38 18.7 4 21"/><path d="M17.64 18.67 20 21"/></svg>
+            </div>
+            <h3>Você vai parar de apagar incêndio todo dia</h3>
+          </div>
+          <p class="benefit-desc">Aprenda o sistema de priorização que líderes de alta performance usam para focar no estratégico e delegar o operacional sem medo</p>
+        </div>
+        
+        <div class="benefit-card card-2">
+          <div class="benefit-header">
+            <div class="benefit-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg>
+            </div>
+            <h3>Sua equipe vai entregar no prazo (sem você cobrar)</h3>
+          </div>
+          <p class="benefit-desc">Descubra ferramentas de acompanhamento que eliminam atrasos e fazem o time assumir responsabilidade pelo resultados</p>
+        </div>
+        
+        <div class="benefit-card card-3">
+          <div class="benefit-header">
+            <div class="benefit-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3>Você vai ganhar +10 horas produtivas por semana</h3>
+          </div>
+          <p class="benefit-desc">Veja como automatizar tarefas repetitivas com IA e ferramentas que seus concorrentes ainda não conhecem</p>
+        </div>
+        
+        <div class="benefit-card card-4">
+          <div class="benefit-header">
+            <div class="benefit-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Você vai se posicionar como líder referência</h3>
+          </div>
+          <p class="benefit-desc">Entenda o que diferencia gestores promovidos rapidamente dos que ficam estagnados (mesmo tendo bons resultados)</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 50px;">
+        <button type="button" onclick="openModal()" class="btn-primary">
+          <span>Quero Participar</span>
+          <span class="btn-icon-circle" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SCHEDULE ─── -->
+  <section class="schedule">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">O que você <strong>vai aprender?</strong></h2>
+      </div>
+
+      <div class="schedule-grid">
+        <article class="class-card">
+          <div class="class-thumb">
+            <img src="./assets/aula01.webp" alt="Aula 01 - 07 ferramentas de produtividade" loading="lazy" width="640" height="360" />
+          </div>
+          <div class="class-body">
+            <div class="class-meta">
+              <span class="class-badge class-badge--aula">
+                <svg class="live-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="#FF6B00"/><path d="M5 12a7 7 0 0 1 14 0" stroke="#FF6B00" stroke-width="2" stroke-linecap="round"/><path d="M3 12a9 9 0 0 1 18 0" stroke="#FF6B00" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/></svg>
+                Aula 01
+              </span>
+              <span class="class-badge class-badge--date">25/05 | Segunda às 19h30</span>
+            </div>
+            <h3 class="class-title">07 ferramentas de produtividade que potencializarão sua gestão</h3>
+            <p class="class-desc">Explore as ferramentas essenciais para otimizar sua rotina como gestor, aumentar a produtividade da equipe e implementar processos mais ágeis.</p>
+          </div>
+        </article>
+
+        <article class="class-card">
+          <div class="class-thumb">
+            <img src="./assets/aula02.webp" alt="Aula 02 - Ferramentas que todo gestor precisa conhecer" loading="lazy" width="640" height="360" />
+          </div>
+          <div class="class-body">
+            <div class="class-meta">
+              <span class="class-badge class-badge--aula">
+                <svg class="live-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="#FF6B00"/><path d="M5 12a7 7 0 0 1 14 0" stroke="#FF6B00" stroke-width="2" stroke-linecap="round"/><path d="M3 12a9 9 0 0 1 18 0" stroke="#FF6B00" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/></svg>
+                Aula 02
+              </span>
+              <span class="class-badge class-badge--date">26/05 | Terça às 19h30</span>
+            </div>
+            <h3 class="class-title">Ferramentas que todo gestor precisa conhecer</h3>
+            <p class="class-desc">Conheça as 7 ferramentas essenciais para otimizar processos, melhorar decisões e aumentar a produtividade da sua gestão.</p>
+          </div>
+        </article>
+
+        <article class="class-card">
+          <div class="class-thumb">
+            <img src="./assets/aula03.webp" alt="Aula 03 - O segredo da Gestão de Pessoas" loading="lazy" width="640" height="360" />
+          </div>
+          <div class="class-body">
+            <div class="class-meta">
+              <span class="class-badge class-badge--aula">
+                <svg class="live-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="#FF6B00"/><path d="M5 12a7 7 0 0 1 14 0" stroke="#FF6B00" stroke-width="2" stroke-linecap="round"/><path d="M3 12a9 9 0 0 1 18 0" stroke="#FF6B00" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/></svg>
+                Aula 03
+              </span>
+              <span class="class-badge class-badge--date">27/05 | Quarta às 19h30</span>
+            </div>
+            <h3 class="class-title">O segredo da Gestão de Pessoas</h3>
+            <p class="class-desc">Transforme sua maior dor de cabeça na sua maior arma. Aprenda estratégias para melhorar a gestão de pessoas, criando um ambiente de trabalho harmonioso e produtivo.</p>
+          </div>
+        </article>
+
+        <article class="class-card">
+          <div class="class-thumb">
+            <img src="./assets/aula04.webp" alt="Aula 04 - O posicionamento dos executivos mais bem pagos" loading="lazy" width="640" height="360" />
+          </div>
+          <div class="class-body">
+            <div class="class-meta">
+              <span class="class-badge class-badge--aula">
+                <svg class="live-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="#FF6B00"/><path d="M5 12a7 7 0 0 1 14 0" stroke="#FF6B00" stroke-width="2" stroke-linecap="round"/><path d="M3 12a9 9 0 0 1 18 0" stroke="#FF6B00" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/></svg>
+                Aula 04
+              </span>
+              <span class="class-badge class-badge--date">28/05 | Quinta às 19h30</span>
+            </div>
+            <h3 class="class-title">O posicionamento dos executivos mais bem pagos</h3>
+            <p class="class-desc">Entenda os fatores-chave que impulsionam os executivos de sucesso e como alcançar um alto nível de liderança e reconhecimento.</p>
+          </div>
+        </article>
+      </div>
+
+      <div style="text-align: center;">
+        <button type="button" onclick="openModal()" class="btn-primary">
+          <span>Quero Participar</span>
+          <span class="btn-icon-circle" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT EXPERT ─── -->
+  <section class="about">
+    <div class="container">
+      <div class="about-container">
+        <div class="about-image">
+          <img src="./assets/imagem_jheython_aula.png" alt="Jheython Santana no estúdio" loading="lazy" />
+        </div>
+        <div class="about-content">
+          <div class="hero-subtitle" style="justify-content: flex-start; margin-bottom: 12px;">Sobre o especialista</div>
+          <h2 class="about-title">Jheython Santana</h2>
+          <h3 class="about-subtitle">Fundador da Tetra Educação</h3>
+          <div class="about-text">
+            <p>Treinador Certificado Microsoft (MCT), Microsoft Office Specialist Expert.</p>
+            <p>Mais de <strong>10 anos de experiência em multinacionais</strong> do agronegócio, liderando projetos de reports gerenciais e indicadores de performance nos EUA e Brasil.</p>
+            <p>A Tetra Educação já treinou <strong>mais de 1 milhão de pessoas gratuitamente</strong>, com uma comunidade de mais 800 mil seguidores nas redes sociais.</p>
+          </div>
+          <div style="margin-top: 40px;">
+            <button type="button" onclick="openModal()" class="btn-primary">
+              <span>Quero Participar</span>
+              <span class="btn-icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHY PARTICIPATE ─── -->
+  <section class="why-participate">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Por que participar?</h2>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+          <div class="why-text">
+            <strong>100% Gratuito e Online</strong>
+            Sem Custo, sem pegadinhas. É gratuito, basta participar!
+          </div>
+        </div>
+
+        <div class="why-item">
+          <div class="why-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+          <div class="why-text">
+            <strong>Certificado de Conclusão</strong>
+            Para turbinar seu currículo e comprovar sua atualização.
+          </div>
+        </div>
+
+        <div class="why-item">
+          <div class="why-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+          <div class="why-text">
+            <strong>Aprendizado Prático</strong>
+            Entenda automações que vão acelerar sua forma de trabalhar.
+          </div>
+        </div>
+
+        <div class="why-item">
+          <div class="why-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+          <div class="why-text">
+            <strong>Evento Ao Vivo</strong>
+            Tire suas dúvidas em tempo real com o instrutor de 25 a 28/05 às 19h30.
+          </div>
+        </div>
+      </div>
+
+      <button type="button" onclick="openModal()" class="btn-primary pulse">
+        <span>Quero Participar</span>
+        <span class="btn-icon-circle" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg>
+        </span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <p class="footer-cnpj">Tetra Educação © 2025 - CNPJ: 34.285.904/0001-22.</p>
+    <p class="footer-cnpj">Todos os direitos reservados.</p>
+    <div class="footer-links">
+      <a href="https://tetraeducacao.com.br/politica-de-privacidade-tetra-educacao/" target="_blank" rel="noopener">Política de Privacidade</a>
+    </div>
+  </footer>
+
+  <!-- ─── MODAL (ACTIVECAMPAIGN) ─── -->
+  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()" aria-label="Fechar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="modal-body">
+        <div style="text-align:center; margin-bottom: 24px;">
+          <h3 style="font-size: 22px; font-weight: 800; margin-bottom: 8px;">Garanta sua vaga</h3>
+          <p style="color: var(--color-text-secondary); font-size: 14px;">Preencha os dados abaixo para receber o acesso gratuito.</p>
+        </div>
+        <div class="_form_328"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SCRIPTS ─── -->
+  <script>
+    // COLETA DE DADOS PARA ACTIVECAMPAIGN
+    var _AC_FIELD_MAP = {
+      UTM_SOURCE:   'utm_source',
+      UTM_MEDIUM:   'utm_medium',
+      UTM_CAMPAIGN: 'utm_campaign',
+      UTM_TERM:     'utm_term',
+      UTM_CONTENT:  'utm_content',
+      DISPOSITIVO:  'dispositivo',
+    };
+    var _AC_TAG = 'IGF10 - 2026';
+
+    (function() {
+      var p = new URLSearchParams(window.location.search);
+      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k) {
+        if (p.get(k)) sessionStorage.setItem('_igf_' + k, p.get(k));
+      });
+    })();
+
+    function _collectLeadData() {
+      var ua = navigator.userAgent;
+      var device = /Mobi|Android|iPhone|iPad/i.test(ua) ? 'Mobile' : 'Desktop';
+      return {
+        utm_source:   sessionStorage.getItem('_igf_utm_source')   || '',
+        utm_medium:   sessionStorage.getItem('_igf_utm_medium')   || '',
+        utm_campaign: sessionStorage.getItem('_igf_utm_campaign') || '',
+        utm_term:     sessionStorage.getItem('_igf_utm_term')     || '',
+        utm_content:  sessionStorage.getItem('_igf_utm_content')  || '',
+        dispositivo:  device,
+      };
+    }
+
+    function _injectACFields(form) {
+      var data = _collectLeadData();
+      Object.keys(_AC_FIELD_MAP).forEach(function(acFieldName) {
+        var dataKey = _AC_FIELD_MAP[acFieldName];
+        var name = 'field[' + acFieldName + ',0]';
+        var el = form.querySelector('input[name="' + name + '"]');
+        if (!el) {
+          el = document.createElement('input');
+          el.type = 'hidden';
+          el.name = name;
+          form.appendChild(el);
+        }
+        el.value = data[dataKey] || '';
+      });
+      var tagEl = form.querySelector('input[name="tags"]');
+      if (!tagEl) {
+        tagEl = document.createElement('input');
+        tagEl.type = 'hidden';
+        tagEl.name = 'tags';
+        form.appendChild(tagEl);
+      }
+      tagEl.value = _AC_TAG;
+      
+      var listEl = form.querySelector('input[name="nlbox[]"][value="1062"]');
+      if (!listEl) {
+        listEl = document.createElement('input');
+        listEl.type = 'hidden';
+        listEl.name = 'nlbox[]';
+        listEl.value = '1062';
+        form.appendChild(listEl);
+      }
+    }
+
+    var _acFieldsWired = false;
+    new MutationObserver(function(mutations, obs) {
+      if (_acFieldsWired) return;
+      var form = document.querySelector('._form_328 form');
+      if (!form) return;
+      _acFieldsWired = true;
+      obs.disconnect();
+      _injectACFields(form);
+      form.addEventListener('submit', function() { _injectACFields(form); }, true);
+    }).observe(document.getElementById('modal'), { childList: true, subtree: true });
+
+    // REDIRECIONAMENTO PÓS-SUBMISSÃO
+    window._form_callback = function(id) {
+      window.location.href = 'https://curso.tetraeducacao.com.br/igf-obg';
+    };
+
+    // CONTROLE DO MODAL
+    var _acFormLoaded = false;
+    function openModal() {
+      document.getElementById('modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+      if (!_acFormLoaded) {
+        _acFormLoaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://tetraeducacao.activehosted.com/f/embed.php?id=328';
+        s.charset = 'utf-8';
+        document.body.appendChild(s);
+      }
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // FACEBOOK TRACKING
+    function _trackFbEvent(name) {
+      var id = Date.now().toString(36) + Math.random().toString(36).substr(2);
+      if (typeof fbq === 'function') fbq('track', name, {}, {eventID: id});
+      var fbp = (document.cookie.match(/_fbp=([^;]+)/) || [])[1] || '';
+      var fbc = (document.cookie.match(/_fbc=([^;]+)/) || [])[1] || '';
+      fetch('/api/fbevents', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          event_name: name,
+          event_id: id,
+          event_source_url: window.location.href,
+          fbp: fbp,
+          fbc: fbc
+        })
+      });
+    }
+
+    var _leadTracked = false;
+    new MutationObserver(function(mutations) {
+      if (_leadTracked) return;
+      for (var i = 0; i < mutations.length; i++) {
+        var nodes = mutations[i].addedNodes;
+        for (var j = 0; j < nodes.length; j++) {
+          var node = nodes[j];
+          if (node.nodeType !== 1) continue;
+          var cls = node.className || '';
+          if (cls.indexOf('_form-thank-you') !== -1 ||
+              (node.querySelector && node.querySelector('._form-thank-you'))) {
+            _leadTracked = true;
+            _trackFbEvent('Lead');
+            break;
+          }
+        }
+        if (_leadTracked) break;
+      }
+    }).observe(document.getElementById('modal'), {childList: true, subtree: true});
+  </script>
+</body>
+</html>
