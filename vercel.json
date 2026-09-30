@@ -16,6 +16,8 @@
     { "source": "/d5", "destination": "/igf-d5.html" },
     { "source": "/d6", "destination": "/igf-d6.html" },
     { "source": "/d7", "destination": "/igf-d7.html" },
-    { "source": "/d8", "destination": "/igf-d8.html" }
+    { "source": "/d8", "destination": "/igf-d8.html" },
+    { "source": "/d1-indicacao", "destination": "/igf-d1-indicacao.html" },
+    { "source": "/pos", "destination": "/igf-d1-pos.html" }
   ]
 }

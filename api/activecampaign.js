@@ -10,7 +10,6 @@ export default async function handler(req, res) {
 
   const apiUrl   = process.env.AC_API_URL;
   const apiToken = process.env.AC_API_TOKEN;
-  const listId   = process.env.AC_LIST_ID || '1312';
   const tagName  = process.env.AC_TAG_NAME || 'IGF-D1-2026';
 
   if (!apiUrl || !apiToken) {
@@ -20,6 +19,9 @@ export default async function handler(req, res) {
   const body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
   const email = (body.email || '').trim();
   if (!email) return res.status(400).json({ error: 'email is required' });
+
+  // Lista pode ser definida por página (body.listId); cai no padrão se não vier ou for inválida.
+  const listId = /^\d+$/.test(String(body.listId || '')) ? String(body.listId) : (process.env.AC_LIST_ID || '1312');
 
   const firstName = (body.firstName || body.nome || '').trim();
   const phone     = (body.phone || body.whatsapp || '').trim();
@@ -39,13 +41,15 @@ export default async function handler(req, res) {
           email,
           firstName,
           phone,
+          // IDs numéricos reais dos campos customizados na conta AC (não são o nome do campo —
+          // a API só aceita o ID; ver GET /api/3/fields para conferir/atualizar).
           fieldValues: [
-            { field: 'utm_source',   value: body.utm_source   || '' },
-            { field: 'utm_medium',   value: body.utm_medium   || '' },
-            { field: 'utm_campaign', value: body.utm_campaign || '' },
-            { field: 'utm_term',     value: body.utm_term     || '' },
-            { field: 'utm_content',  value: body.utm_content  || '' },
-            { field: 'dispositivo',  value: body.dispositivo  || '' },
+            { field: '12', value: (body.utm_source   || '').toUpperCase() }, // UTM_SOURCE (%UTM_SOURCE_2%)
+            { field: '8',  value: (body.utm_medium   || '').toUpperCase() }, // UTM_MEDIUM (%UTM_MEDIUM_2%)
+            { field: '11', value: (body.utm_campaign || '').toUpperCase() }, // UTM_CAMPAIGN (%UTM_CAMPAIGN_2%)
+            { field: '10', value: (body.utm_term     || '').toUpperCase() }, // UTM_TERM (%UTM_TERM_2%)
+            { field: '5',  value: (body.utm_content  || '').toUpperCase() }, // UTM_CONTENT (%UTM_CONTENT_2%)
+            { field: '60', value: body.dispositivo   || '' },                // Dispositivo
           ].filter(f => f.value),
         },
       }),
